@@ -5,38 +5,6 @@ import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
 
-type TableDataProps = {
-    props?: string;
-    data?: number | string;
-};
-
-const dataPropsMapper = {
-    id: {
-        title: "id",
-        parseData: (data) => data,
-    },
-    original_title: {
-        title: "원제목",
-        parseData: (data) => data,
-    },
-    title: {
-        title: "영화 제목",
-        parseData: (data) => data,
-    },
-    poster_path: {
-        title: "포스터",
-        parseData: (data) => data,
-    },
-    overview: {
-        title: "줄거리",
-        parseData: (data) => data,
-    },
-    vote_average: {
-        title: "평균 평점",
-        parseData: (data) => data,
-    },
-};
-
 const MovieCard = ({ movies }) => {
     console.log("Load!");
     console.log(movies);
