@@ -80,11 +80,17 @@ const Table = styled.table`
     background-color: #f0f0f0;
     width: 100%;
     table-layout: fixed;
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px #d4d4d4, -10px -10px 20px #ffffff;
 `;
 
 const TableHeader = styled.tr`
     font-size: 10px;
     white-space: nowrap;
+    text-align: center;
+    th {
+        padding: 5px;
+    }
     .rank {
         width: 10%;
     }
@@ -106,6 +112,7 @@ const TableRow = styled.tr`
 `;
 
 const TableData = styled.td<TableDataProps>`
+    padding: 5px;
     overflow: hidden;
     text-overflow: ellipsis;
     color: ${(props) =>

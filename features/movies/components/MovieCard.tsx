@@ -6,53 +6,46 @@ import React from "react";
 import styled from "styled-components";
 
 const MovieCard = ({ movies }) => {
-    console.log("Load!");
-    console.log(movies);
-
     return (
         <Container>
-            {/* <Link
-                href={{
-                    pathname: `/movie/${movies.id}`,
-                }}
-            > */}
-            {movies ? (
-                <Moviecard>
-                    <MoviePoster>
-                        <MovieImg
-                            src={`https://image.tmdb.org/t/p/w500${movies.poster_path}`}
-                            alt={movies.original_title}
-                            title={movies.original_title}
-                        />
-                    </MoviePoster>
-                    <MovieInfo>
-                        <MovieInfoTop>
-                            <MovieInfoTitle>{movies.title}</MovieInfoTitle>
-                        </MovieInfoTop>
-                        <div>
-                            <hr />
-                        </div>
-                        <MovieInfoBottom>
-                            <MovieInfoOverview>
-                                {movies.overview.substr(0, 70)}
-                                {movies.overview.length > 140 ? "..." : ""}
-                            </MovieInfoOverview>
-                            <MovieInfoVote>
-                                <FontAwesomeIcon
-                                    style={{
-                                        margin: "0 auto",
-                                        color: "yellow",
-                                    }}
-                                    className="star"
-                                    icon={faStar}
-                                />
-                                {movies.vote_average}
-                            </MovieInfoVote>
-                        </MovieInfoBottom>
-                    </MovieInfo>
-                </Moviecard>
-            ) : null}
-            {/* </Link> */}
+            <Link href={`movie/${movies.id}`}>
+                {movies ? (
+                    <Moviecard>
+                        <MoviePoster>
+                            <MovieImg
+                                src={`https://image.tmdb.org/t/p/w500${movies.poster_path}`}
+                                alt={movies.original_title}
+                                title={movies.original_title}
+                            />
+                        </MoviePoster>
+                        <MovieInfo>
+                            <MovieInfoTop>
+                                <MovieInfoTitle>{movies.title}</MovieInfoTitle>
+                            </MovieInfoTop>
+                            <div>
+                                <hr />
+                            </div>
+                            <MovieInfoBottom>
+                                <MovieInfoOverview>
+                                    {movies.overview.substr(0, 70)}
+                                    {movies.overview.length > 140 ? "..." : ""}
+                                </MovieInfoOverview>
+                                <MovieInfoVote>
+                                    <FontAwesomeIcon
+                                        style={{
+                                            margin: "0 auto",
+                                            color: "yellow",
+                                        }}
+                                        className="star"
+                                        icon={faStar}
+                                    />
+                                    {movies.vote_average}
+                                </MovieInfoVote>
+                            </MovieInfoBottom>
+                        </MovieInfo>
+                    </Moviecard>
+                ) : null}
+            </Link>
         </Container>
     );
 };
@@ -64,14 +57,6 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-`;
-
-const Wrap = styled.div`
-    background-color: blue;
-    box-sizing: border-box;
-    margin: 0 auto;
-    padding: 0;
-    justify-content: center;
 `;
 
 const Moviecard = styled.div`

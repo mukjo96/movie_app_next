@@ -6,6 +6,7 @@ import {
     getLastWeekendBoxOffice,
 } from "@features/home/api/boxOffice.api";
 import Router from "next/router";
+import { getTopRated } from "@features/movies/api/getMovie.api";
 
 const boxofficeTypeMapper = {
     today: {
@@ -16,27 +17,25 @@ const boxofficeTypeMapper = {
         title: `LAST WEEKEND'S BOX OFFICE`,
         dataProps: ["rank", "rankInten", "movieNm", "audiAcc"],
     },
-    topRated: {
-        title: `LAST WEEKEND'S BOX OFFICE`,
-        dataProps: ["rank", "rankInten", "movieNm", "audiAcc"],
-    },
 };
 
 const BoxOffice = () => {
     const [datas, setDatas] = useState({
         today: [],
         lastWeekend: [],
-        topRated: [],
     });
 
     useEffect(() => {
         async function fetchMovies() {
             const today = await getTodayBoxOffice();
             const lastWeekend = await getLastWeekendBoxOffice();
+            /* const topRateds = await getTopRated(1);
+            let topRated:Array<any>;
+            topRateds.slice(0, 10).map((top) => topRated = [...topRated,{idx: topRateds.indexOf(top)+1, vote_average : top.vote_average, title:  top.title, vote_count: top.vote_count}]);
+ */
             setDatas({
                 today,
                 lastWeekend,
-                topRated: [],
             });
         }
         fetchMovies();
@@ -74,7 +73,7 @@ const Container = styled.div`
 const ListWrapper = styled.div`
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding: 40px 0;
 `;
 
@@ -87,4 +86,5 @@ const Header = styled.h2`
         font-weight: 600;
         color: #666;
     }
+    margin-bottom: 1em;
 `;
