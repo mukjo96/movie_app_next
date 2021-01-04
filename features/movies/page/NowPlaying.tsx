@@ -5,29 +5,28 @@ import { useRouter } from "next/router";
 import MovieCard from "@features/movies/components/MovieCard";
 import styled from "styled-components";
 import NavBar from "@features/home/components/navigation/NavBar";
+import Loading from "@features/common/Loading";
 
 const NowPlaying = () => {
     const router = useRouter();
-    const nowpage = Number(router.query.page);
+    const nowpage = Number(router.query.page) || 1;
 
     const [isLoading, setIsLoading] = useState(true);
     const [movies, setMovies] = useState([]);
-    const [currentPage, setCurrentPage] = useState(nowpage || 1);
     const [totalPage, setTotalPage] = useState(20);
 
     useEffect(() => {
         async function fetchMovies() {
-            const nowplaying = await getNowPlaying(currentPage);
+            const nowplaying = await getNowPlaying(nowpage);
             setMovies(nowplaying.results);
             setTotalPage(nowplaying.total_results);
         }
         fetchMovies();
         setIsLoading(false);
-        console.log(currentPage, totalPage);
+        console.log(nowpage, totalPage);
     }, [nowpage]);
 
     const onChange = (pageNumber) => {
-        setCurrentPage(pageNumber);
         router.push(`/nowplaying?page=${pageNumber}`);
     };
 
@@ -40,12 +39,13 @@ const NowPlaying = () => {
                     textAlign: "center",
                 }}
                 showSizeChanger={false}
+                current={nowpage}
                 defaultPageSize={20}
                 total={totalPage}
                 onChange={onChange}
             />
             {isLoading ? (
-                <div>Loading ...</div>
+                <Loading />
             ) : (
                 <Movies>
                     {movies.map((movie) => (

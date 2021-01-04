@@ -33,3 +33,17 @@ export async function getUpcoming(page) {
         console.log(error);
     }
 }
+
+export async function getSearchResults(text, page) {
+    try {
+        let response = await axios.get(
+            `
+              https://api.themoviedb.org/3/search/movie?api_key=cfaaa8c5177462f54ee54a30c746dca3&language=ko-KR&page=${page}&include_adult=false&query=${text}`
+        );
+
+        const movieData = response.data;
+        return movieData;
+    } catch (error) {
+        console.log(error);
+    }
+}

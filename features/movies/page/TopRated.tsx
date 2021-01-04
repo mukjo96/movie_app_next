@@ -5,29 +5,27 @@ import { useRouter } from "next/router";
 import MovieCard from "@features/movies/components/MovieCard";
 import styled from "styled-components";
 import NavBar from "@features/home/components/navigation/NavBar";
+import Loading from "@features/common/Loading";
 
 const TopRated = () => {
     const router = useRouter();
-    const nowpage = Number(router.query.page);
+    const nowpage = Number(router.query.page) || 1;
 
     const [isLoading, setIsLoading] = useState(true);
     const [movies, setMovies] = useState([]);
-    const [currentPage, setCurrentPage] = useState(nowpage || 1);
     const [totalPage, setTotalPage] = useState(20);
 
     useEffect(() => {
         async function fetchMovies() {
-            const toprated = await getTopRated(currentPage);
+            const toprated = await getTopRated(nowpage);
             setMovies(toprated.results);
             setTotalPage(toprated.total_results);
         }
         fetchMovies();
         setIsLoading(false);
-        console.log(currentPage, totalPage);
     }, [nowpage]);
 
     const onChange = (pageNumber) => {
-        setCurrentPage(pageNumber);
         router.push(`/toprated?page=${pageNumber}`);
     };
 
@@ -41,11 +39,12 @@ const TopRated = () => {
                 }}
                 showSizeChanger={false}
                 defaultPageSize={20}
+                current={nowpage}
                 total={totalPage}
                 onChange={onChange}
             />
             {isLoading ? (
-                <div>Loading ...</div>
+                <Loading />
             ) : (
                 <Movies>
                     {movies.map((movie) => (

@@ -1,10 +1,13 @@
+import MovieInfo from "@features/movieInfo/page/MovieInfo";
 import React from "react";
-import Home from "@features/home/page/Home";
 import styled from "styled-components";
-import BoxOffice from "@features/home/components/boxOffice/BoxOffice";
 
-const Index = () => {
-    return <div>movie info</div>;
+const MovieInfoPage = () => {
+    return (
+        <div>
+            <MovieInfo />
+        </div>
+    );
 };
 
-export default Index;
+export default MovieInfoPage;

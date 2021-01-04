@@ -27,7 +27,6 @@ const dataPropsMapper = {
 };
 
 const BoxOfficeList = ({ title, dataProps, datas }) => {
-    console.log(dataProps, datas);
     return (
         <Container>
             <Header>{title}</Header>

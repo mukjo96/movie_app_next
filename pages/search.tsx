@@ -1,20 +1,20 @@
+import Search from "@features/movies/page/Search";
 import React from "react";
-import LoginPage from "./login";
 import styled from "styled-components";
-import NowPlaying from "@features/movies/page/NowPlaying";
 
-const NowPlayingPage = () => {
+const SearchPage = () => {
     return (
         <Page>
-            <NowPlaying />
+            <Search />
         </Page>
     );
 };
 
-export default NowPlayingPage;
+export default SearchPage;
 
 const Page = styled.div`
     flex-direction: column;
+
     width: 100%;
     display: flex;
 `;

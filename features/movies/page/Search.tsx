@@ -1,14 +1,15 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { getUpcoming } from "@features/movies/api/getMovie.api";
-import { Pagination } from "antd";
-import { useRouter } from "next/router";
-import MovieCard from "@features/movies/components/MovieCard";
 import styled from "styled-components";
+import { useRouter } from "next/router";
+import { Pagination } from "antd";
+import { getSearchResults } from "../api/getMovie.api";
 import NavBar from "@features/home/components/navigation/NavBar";
+import MovieCard from "@features/movies/components/MovieCard";
 import Loading from "@features/common/Loading";
 
-const UpComing = () => {
+const Search = () => {
     const router = useRouter();
+    const text = router.query.text;
     const nowpage = Number(router.query.page) || 1;
 
     const [isLoading, setIsLoading] = useState(true);
@@ -17,16 +18,17 @@ const UpComing = () => {
 
     useEffect(() => {
         async function fetchMovies() {
-            const upcoming = await getUpcoming(nowpage);
-            setMovies(upcoming.results);
-            setTotalPage(upcoming.total_results);
+            const search = await getSearchResults(text, nowpage);
+            console.log(search);
+            setMovies(search.results);
+            setTotalPage(search.total_results);
         }
         fetchMovies();
         setIsLoading(false);
-    }, [nowpage]);
+    }, [nowpage, text]);
 
     const onChange = (pageNumber) => {
-        router.push(`/upcoming?page=${pageNumber}`);
+        router.push(`/search?text=${text}&page=${pageNumber}`);
     };
 
     return (
@@ -56,7 +58,7 @@ const UpComing = () => {
     );
 };
 
-export default UpComing;
+export default Search;
 
 const Movies = styled.div`
     display: grid;
