@@ -32,7 +32,6 @@ const NowPlaying = () => {
 
     return (
         <Fragment>
-            <NavBar />
             <Pagination
                 showQuickJumper
                 style={{

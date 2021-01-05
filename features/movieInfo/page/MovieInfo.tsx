@@ -12,7 +12,6 @@ const MovieInfo = () => {
 
     const [details, setDetails] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    console.log(movieId);
     useEffect(() => {
         async function fetchDetails() {
             const movieInfo = await getMovieDetails(movieId);
@@ -27,7 +26,6 @@ const MovieInfo = () => {
 
     return (
         <Fragment>
-            <NavBar />
             {isLoading ? (
                 <Loading />
             ) : (

@@ -14,7 +14,7 @@ const NavLinks = () => {
     return (
         <Container>
             {navItems.map((item, index) => (
-                <Link href={`${item.route}`}>
+                <Link href={`/${item.route}`}>
                     <li key={index}>{item.title}</li>
                 </Link>
             ))}

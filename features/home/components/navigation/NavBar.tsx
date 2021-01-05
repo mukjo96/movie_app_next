@@ -19,7 +19,7 @@ export default NavBar;
 const Container = styled.nav`
     width: 100%;
     display: flex;
-    align-items: center;
+    margin: 0 auto;
     padding: 8px 12px;
 
     @media screen and (min-width: 1280px) {

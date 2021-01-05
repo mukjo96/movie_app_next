@@ -31,7 +31,6 @@ const UpComing = () => {
 
     return (
         <Fragment>
-            <NavBar />
             <Pagination
                 showQuickJumper
                 style={{

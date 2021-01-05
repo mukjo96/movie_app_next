@@ -33,7 +33,6 @@ const Search = () => {
 
     return (
         <Fragment>
-            <NavBar />
             <Pagination
                 showQuickJumper
                 style={{

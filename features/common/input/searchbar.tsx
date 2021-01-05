@@ -15,6 +15,7 @@ const Searchbar = () => {
         <Search
             style={{
                 width: "240px",
+                padding: "3px 0 3px 0",
                 marginLeft: "5px",
             }}
             placeholder="Search Movie"

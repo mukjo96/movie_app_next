@@ -31,7 +31,6 @@ const TopRated = () => {
 
     return (
         <Fragment>
-            <NavBar />
             <Pagination
                 showQuickJumper
                 style={{
