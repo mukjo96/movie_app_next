@@ -21,4 +21,5 @@ export default DetailCard;
 
 const Container = styled.div`
     height: 100%;
+    margin-bottom: 10%;
 `;

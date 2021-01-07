@@ -1,14 +1,7 @@
-import React from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import styled from "styled-components";
-import { Rate, Tabs } from "antd";
-import {
-    ReadOutlined,
-    AuditOutlined,
-    VideoCameraOutlined,
-    CommentOutlined,
-} from "@ant-design/icons";
-
-const { TabPane } = Tabs;
+import { Rate } from "antd";
+import Descriptions from "./Descriptions";
 
 const InfoDetail = ({ details }) => {
     const rate = details.vote_average;
@@ -32,60 +25,13 @@ const InfoDetail = ({ details }) => {
                             disabled
                             count={5}
                             allowHalf={true}
-                            defaultValue={rate}
+                            value={rate / 2}
                         />
                         <span> {rate}</span>
                     </span>
                 </Titlediv>
             </MainInfo>
-            <Descriptions>
-                <Tabs defaultActiveKey="2" centered={true} size="large">
-                    <TabPane
-                        tab={
-                            <span>
-                                <ReadOutlined />
-                                Details
-                            </span>
-                        }
-                        key="1"
-                    >
-                        Tab 1
-                    </TabPane>
-                    <TabPane
-                        tab={
-                            <span>
-                                <AuditOutlined />
-                                Cast
-                            </span>
-                        }
-                        key="2"
-                    >
-                        Tab 2
-                    </TabPane>
-                    <TabPane
-                        tab={
-                            <span>
-                                <VideoCameraOutlined />
-                                Recommendations
-                            </span>
-                        }
-                        key="3"
-                    >
-                        Tab 2
-                    </TabPane>
-                    <TabPane
-                        tab={
-                            <span>
-                                <CommentOutlined />
-                                Comment
-                            </span>
-                        }
-                        key="4"
-                    >
-                        Tab 2
-                    </TabPane>
-                </Tabs>
-            </Descriptions>
+            <Descriptions details={details} />
         </Container>
     );
 };
@@ -94,7 +40,8 @@ export default InfoDetail;
 
 const Container = styled.div`
     width: 90%;
-    height: 1200px;
+    height: 100%;
+    padding-bottom: 10%;
     margin: 0 auto;
     margin-top: -50px;
     border-radius: 15px;
@@ -150,5 +97,3 @@ const Poster = styled.img`
     margin-top: -50px;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
 `;
-
-const Descriptions = styled.div``;

@@ -29,9 +29,12 @@ const MovieInfo = () => {
             {isLoading ? (
                 <Loading />
             ) : (
-                <Details>
-                    <DetailCard details={details} />
-                </Details>
+                <>
+                    <Details>
+                        <DetailCard details={details} />
+                    </Details>
+                    <Block></Block>
+                </>
             )}
         </Fragment>
     );
@@ -40,3 +43,7 @@ const MovieInfo = () => {
 export default MovieInfo;
 
 const Details = styled.div``;
+
+const Block = styled.div`
+    height: 50px;
+`;
