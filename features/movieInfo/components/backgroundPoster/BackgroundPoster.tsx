@@ -4,7 +4,7 @@ import { Modal } from "antd";
 import ReactPlayer from "react-player/youtube";
 import { getMovieVideos } from "@features/movieInfo/api/getDetail.api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlayCircle } from "@fortawesome/free-solid-svg-icons";
+import { PlayCircleFilled } from "@ant-design/icons";
 
 const BackgroundPoster = ({ backdrop_path, movieId }) => {
     const [visible, setVisible] = useState(false);
@@ -14,13 +14,11 @@ const BackgroundPoster = ({ backdrop_path, movieId }) => {
             const trailerID = await getMovieVideos(movieId);
             if (trailerID.results[0] !== undefined) {
                 let key = trailerID.results[0].key;
-                console.log(key);
                 setMovieVideo(key);
             }
         }
         if (movieId !== undefined) {
             fetchTrailer();
-            console.log("movieViedo", movieVideo);
         }
     }, [movieId]);
 
@@ -32,15 +30,14 @@ const BackgroundPoster = ({ backdrop_path, movieId }) => {
                 }}
             >
                 <Layer>
-                    <FontAwesomeIcon
+                    <PlayCircleFilled
                         style={{
                             textAlign: "center",
                             fontSize: "6em",
-                            color: "#fff",
+                            color: "#000",
                             opacity: "0.7",
                             cursor: "pointer",
                         }}
-                        icon={faPlayCircle}
                         onClick={() => setVisible(true)}
                     />
                 </Layer>

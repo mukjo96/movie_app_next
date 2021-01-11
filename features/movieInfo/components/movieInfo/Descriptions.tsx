@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Tabs } from "antd";
 import {
@@ -8,13 +8,16 @@ import {
     CommentOutlined,
 } from "@ant-design/icons";
 import Details from "./descriptions/Details";
+import Cast from "./descriptions/Cast";
+import Loading from "@features/common/Loading";
+import Recommendations from "./descriptions/Recommendations";
 
 const { TabPane } = Tabs;
 
 const Descriptions = ({ details }) => {
     return (
         <Container>
-            <Tabs defaultActiveKey="2" centered={true} size="large">
+            <Tabs defaultActiveKey="1" centered={true} size="large">
                 <TabPane
                     tab={
                         <span>
@@ -35,7 +38,7 @@ const Descriptions = ({ details }) => {
                     }
                     key="2"
                 >
-                    Tab 2
+                    <Cast />
                 </TabPane>
                 <TabPane
                     tab={
@@ -46,7 +49,7 @@ const Descriptions = ({ details }) => {
                     }
                     key="3"
                 >
-                    Tab 2
+                    <Recommendations />
                 </TabPane>
                 <TabPane
                     tab={

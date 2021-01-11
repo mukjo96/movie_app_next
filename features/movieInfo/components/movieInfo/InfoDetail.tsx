@@ -2,32 +2,38 @@ import React, { Fragment, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Rate } from "antd";
 import Descriptions from "./Descriptions";
+import Loading from "@features/common/Loading";
+import { UserOutlined } from "@ant-design/icons";
 
-const InfoDetail = ({ details }) => {
-    const rate = details.vote_average;
+const InfoDetail = (details) => {
+    const movieInfo = details.details;
+    const rate = movieInfo.vote_average;
 
     return (
         <Container>
             <MainInfo>
                 <Posterdiv>
                     <Poster
-                        src={`https://image.tmdb.org/t/p/w500${details.poster_path}`}
-                        alt={details.original_title}
-                        title={details.original_title}
+                        src={`https://image.tmdb.org/t/p/w500${movieInfo.poster_path}`}
+                        alt={movieInfo.original_title}
+                        title={movieInfo.original_title}
                     />
                 </Posterdiv>
                 <Titlediv>
-                    <Title>{details.title}</Title>
-                    <OriginalTitle>{details.original_title}</OriginalTitle>
-                    <Release>{details.release_date}</Release>
+                    <Title>{movieInfo.title}</Title>
+                    <OriginalTitle>{movieInfo.original_title}</OriginalTitle>
+                    <Release>{movieInfo.release_date.substr(0, 4)}</Release>
                     <span>
                         <Rate
                             disabled
                             count={5}
                             allowHalf={true}
-                            value={rate / 2}
+                            value={Math.round(rate) / 2}
                         />
-                        <span> {rate}</span>
+                        <Ratenum>
+                            {rate} (<UserOutlined />
+                            {movieInfo.vote_count})
+                        </Ratenum>
                     </span>
                 </Titlediv>
             </MainInfo>
@@ -96,4 +102,11 @@ const Poster = styled.img`
     width: 100%;
     margin-top: -50px;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
+`;
+
+const Ratenum = styled.span`
+    margin-left: 1em;
+    background-color: #6beda9;
+    border-radius: 5px;
+    padding: 5px;
 `;

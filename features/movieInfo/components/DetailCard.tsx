@@ -5,7 +5,6 @@ import BackgroundPoster from "./backgroundPoster/BackgroundPoster";
 import InfoDetail from "./movieInfo/InfoDetail";
 
 const DetailCard = ({ details }) => {
-    console.log(details);
     return (
         <Container>
             <BackgroundPoster

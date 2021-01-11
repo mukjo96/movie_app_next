@@ -8,7 +8,7 @@ import styled from "styled-components";
 const MovieCard = ({ movies }) => {
     return (
         <Container>
-            <Link href={`movie/${movies.id}`}>
+            <Link href={`/movie/${movies.id}`}>
                 {movies ? (
                     <Moviecard>
                         <MoviePoster>

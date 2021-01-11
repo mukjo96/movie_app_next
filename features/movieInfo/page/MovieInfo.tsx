@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import Loading from "@features/common/Loading";
@@ -6,23 +7,20 @@ import NavBar from "@features/home/components/navigation/NavBar";
 import { getMovieDetails } from "../api/getDetail.api";
 import DetailCard from "../components/DetailCard";
 
-const MovieInfo = () => {
-    const router = useRouter();
-    const movieId = router.query.movieId || 0;
+const MovieInfo = ({ details }) => {
+    const [isLoading, setIsLoading] = useState(false);
 
-    const [details, setDetails] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    useEffect(() => {
+    /* useEffect(() => {
         async function fetchDetails() {
             const movieInfo = await getMovieDetails(movieId);
             setDetails(movieInfo);
-            console.log(movieInfo);
+            console.log("info", movieInfo);
         }
         if (movieId !== 0) {
             fetchDetails();
             setIsLoading(false);
         }
-    }, [movieId]);
+    }, [movieId]); */
 
     return (
         <Fragment>

@@ -1,19 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import { Divider, Typography, Row, Col, Tag } from "antd";
+import Loading from "@features/common/Loading";
 
 const { Paragraph, Link } = Typography;
 
 const Details = ({ details }) => {
+    const movieInfo = details.details;
+    console.log(movieInfo);
     return (
         <Container>
             <Row>
                 <Col span={6}>
                     <div>
-                        <Divider orientation="left">GENRES</Divider>
+                        <Divider orientation="center">GENRES</Divider>
 
-                        {details.genres.map((genre, index) => (
+                        {movieInfo.genres.map((genre, index) => (
                             <Tag
                                 key={index}
                                 color={
@@ -23,35 +26,42 @@ const Details = ({ details }) => {
                                         ? "magenta"
                                         : "orange"
                                 }
+                                style={{ marginTop: "6px" }}
                             >
                                 {genre.name}
                             </Tag>
                         ))}
                     </div>
                     <div>
-                        <Divider orientation="left">
+                        <Divider orientation="center">
                             PRODUCTION COUNTRIES
                         </Divider>
-                        {details.production_countries.map((country, index) => (
-                            <Tag
-                                key={index}
-                                color={
-                                    index % 3 === 0
-                                        ? "red"
-                                        : index % 3 === 1
-                                        ? "green"
-                                        : "purple"
-                                }
-                            >
-                                {nationtoKR(country.name)}
-                            </Tag>
-                        ))}
+                        {movieInfo.production_countries.map(
+                            (country, index) => (
+                                <Tag
+                                    key={index}
+                                    color={
+                                        index % 3 === 0
+                                            ? "red"
+                                            : index % 3 === 1
+                                            ? "green"
+                                            : "purple"
+                                    }
+                                >
+                                    {nationtoKR(country.name)}
+                                </Tag>
+                            )
+                        )}
                     </div>
                     <div>
-                        <Divider orientation="left">OFFICIAL WEBSITE</Divider>
-                        {details.homepage ? (
-                            <Link href={details.homepage} target="_blank">
-                                {details.homepage}
+                        <Divider orientation="center">OFFICIAL WEBSITE</Divider>
+                        {movieInfo.homepage ? (
+                            <Link
+                                style={{ cursor: "pointer" }}
+                                href={movieInfo.homepage}
+                                target="_blank"
+                            >
+                                {movieInfo.homepage}
                             </Link>
                         ) : (
                             <span>Sorry, We don't have website</span>
@@ -60,17 +70,13 @@ const Details = ({ details }) => {
                 </Col>
                 <Col span={16} offset={2}>
                     <Divider orientation="left">OVERVIEW</Divider>
-                    <Paragraph
-                        ellipsis={{ rows: 2, expandable: true, symbol: "more" }}
-                    >
-                        {details.overview}
-                    </Paragraph>
+                    <Paragraph>{movieInfo.overview}</Paragraph>
                 </Col>
             </Row>
-            <Row>
+            <Row align="middle">
                 <Divider orientation="left">PRODUCTION COMPANIES</Divider>
                 <Companies>
-                    {details.production_companies.map((company, index) => (
+                    {movieInfo.production_companies.map((company, index) => (
                         <li key={index}>{toImg(company)}</li>
                     ))}
                 </Companies>
@@ -81,7 +87,7 @@ const Details = ({ details }) => {
 
 export default Details;
 const Container = styled.div`
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
 `;
 
