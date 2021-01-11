@@ -33,7 +33,18 @@ const Recommendations = () => {
 
     console.log(data);
     if (error) return <div>failed to load</div>;
-    if (!data) return <Loading />;
+    if (!data)
+        return (
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    marginTop: "2em",
+                }}
+            >
+                <Loading />
+            </div>
+        );
 
     return (
         <Container>

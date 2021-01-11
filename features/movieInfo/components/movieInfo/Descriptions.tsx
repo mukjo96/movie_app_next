@@ -11,6 +11,7 @@ import Details from "./descriptions/Details";
 import Cast from "./descriptions/Cast";
 import Loading from "@features/common/Loading";
 import Recommendations from "./descriptions/Recommendations";
+import Comments from "./descriptions/Comments";
 
 const { TabPane } = Tabs;
 
@@ -55,12 +56,12 @@ const Descriptions = ({ details }) => {
                     tab={
                         <span>
                             <CommentOutlined />
-                            Comment
+                            Comments
                         </span>
                     }
                     key="4"
                 >
-                    Tab 2
+                    <Comments />
                 </TabPane>
             </Tabs>
         </Container>

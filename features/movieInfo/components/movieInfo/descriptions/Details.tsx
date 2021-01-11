@@ -70,7 +70,15 @@ const Details = ({ details }) => {
                 </Col>
                 <Col span={16} offset={2}>
                     <Divider orientation="left">OVERVIEW</Divider>
-                    <Paragraph>{movieInfo.overview}</Paragraph>
+                    <Paragraph
+                        ellipsis={{
+                            rows: 2,
+                            expandable: true,
+                            symbol: "more",
+                        }}
+                    >
+                        {movieInfo.overview}
+                    </Paragraph>
                 </Col>
             </Row>
             <Row align="middle">
@@ -96,6 +104,7 @@ const Companies = styled.div`
     flex-wrap: wrap;
     li {
         margin-right: 24px;
+        margin-top: 24px;
         align-self: center;
 
         img {

@@ -1,32 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Avatar, Row, Col, Divider, Tag } from "antd";
-import { getMovieCredits } from "@features/movieInfo/api/getDetail.api";
+import { Avatar, Row, Col, Divider, Image } from "antd";
 import Loading from "@features/common/Loading";
 import { useRouter } from "next/router";
 import useSWR from "swr";
+import { UserOutlined } from "@ant-design/icons";
 
 const Cast = () => {
     const router = useRouter();
     const id = router.query.movieId;
-    /* const [actors, setActors] = useState();
-    const [crews, setCrews] = useState();
-    const [isLoading, setIsLoading] = useState(true); */
-
-    /* useEffect(() => {
-        console.log(id);
-        async function fetchDetails() {
-            const movieCredits = await getMovieCredits(id);
-            setActors(movieCredits.cast);
-            setCrews(movieCredits.crew);
-            console.log(actors, crews);
-        }
-        fetchDetails();
-
-        if (actors) {
-            setIsLoading(false);
-        }
-    }, [id]); */
 
     const { data, error } = useSWR(
         `https://api.themoviedb.org/3/movie/${id}/credits?api_key=cfaaa8c5177462f54ee54a30c746dca3&language=ko-KR`
@@ -34,7 +16,18 @@ const Cast = () => {
 
     console.log(data);
     if (error) return <div>failed to load</div>;
-    if (!data) return <Loading />;
+    if (!data)
+        return (
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    marginTop: "2em",
+                }}
+            >
+                <Loading />
+            </div>
+        );
 
     return (
         <Container>
@@ -46,7 +39,15 @@ const Cast = () => {
                         <Actor>
                             <Avatar
                                 size={64}
-                                src={`https://www.themoviedb.org/t/p/w276_and_h350_face${element.profile_path}`}
+                                icon={
+                                    element.profile_path ? (
+                                        <Image
+                                            src={`https://www.themoviedb.org/t/p/w276_and_h350_face${element.profile_path}`}
+                                        />
+                                    ) : (
+                                        <UserOutlined />
+                                    )
+                                }
                             />
                             <ActorDesc>
                                 <Name>{element.name}</Name>
@@ -62,7 +63,15 @@ const Cast = () => {
                         <Actor>
                             <Avatar
                                 size={64}
-                                src={`https://www.themoviedb.org/t/p/w276_and_h350_face${element.profile_path}`}
+                                icon={
+                                    element.profile_path ? (
+                                        <Image
+                                            src={`https://www.themoviedb.org/t/p/w276_and_h350_face${element.profile_path}`}
+                                        />
+                                    ) : (
+                                        <UserOutlined />
+                                    )
+                                }
                             />
                             <ActorDesc>
                                 <Name>{element.name}</Name>

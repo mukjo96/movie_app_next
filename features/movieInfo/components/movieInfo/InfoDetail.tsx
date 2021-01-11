@@ -79,7 +79,7 @@ const Release = styled.h5`
     line-height: 1.5;
 `;
 const MainInfo = styled.div`
-    background-color: #ed786a;
+    background-color: #f26b5e;
     width: 100%;
     height: 300px;
     display: inline-flex;
@@ -106,7 +106,8 @@ const Poster = styled.img`
 
 const Ratenum = styled.span`
     margin-left: 1em;
-    background-color: #6beda9;
+    background-color: #303a40;
+    color: #f2e6df;
     border-radius: 5px;
     padding: 5px;
 `;
