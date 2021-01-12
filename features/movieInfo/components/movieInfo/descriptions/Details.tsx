@@ -12,7 +12,7 @@ const Details = ({ details }) => {
     return (
         <Container>
             <Row>
-                <Col span={6}>
+                <Col xs={{ span: 24 }} md={{ span: 6 }}>
                     <div>
                         <Divider orientation="center">GENRES</Divider>
 
@@ -53,7 +53,7 @@ const Details = ({ details }) => {
                             )
                         )}
                     </div>
-                    <div>
+                    <Website>
                         <Divider orientation="center">OFFICIAL WEBSITE</Divider>
                         {movieInfo.homepage ? (
                             <Link
@@ -66,9 +66,9 @@ const Details = ({ details }) => {
                         ) : (
                             <span>Sorry, We don't have website</span>
                         )}
-                    </div>
+                    </Website>
                 </Col>
-                <Col span={16} offset={2}>
+                <Col xs={{ span: 24 }} md={{ span: 16, offset: 2 }}>
                     <Divider orientation="left">OVERVIEW</Divider>
                     <Paragraph
                         ellipsis={{
@@ -99,9 +99,14 @@ const Container = styled.div`
     margin: 0 auto;
 `;
 
+const Website = styled.div`
+    text-align: center;
+`;
+
 const Companies = styled.div`
     display: inline-flex;
     flex-wrap: wrap;
+    justify-content: center;
     li {
         margin-right: 24px;
         margin-top: 24px;

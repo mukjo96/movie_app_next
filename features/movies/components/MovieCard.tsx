@@ -92,6 +92,11 @@ const MoviePoster = styled.div`
     position: relative;
     width: 250px;
     height: 350px;
+
+    @media screen and (max-width: 600px) {
+        width: 125px;
+        height: 175px;
+    }
 `;
 
 const MovieImg = styled.img`
@@ -99,11 +104,22 @@ const MovieImg = styled.img`
     height: 350px;
     border-radius: 10px;
     box-shadow: 5px 5px 10px #d9d9d9, -5px -5px 10px #ffffff;
+
+    @media screen and (max-width: 600px) {
+        width: 125px;
+        height: 175px;
+        border-radius: 10px;
+    }
 `;
 
 const MovieInfoTop = styled.div`
     text-align: left;
     font-weight: bolder;
+
+    @media screen and (max-width: 600px) {
+        width: 125px;
+        font-size: 12px;
+    }
 `;
 
 const MovieInfoTitle = styled.div``;
@@ -114,6 +130,10 @@ const MovieInfoBottom = styled.div`
     justify-content: space-between;
     align-items: center;
     font-size: 14px;
+
+    @media screen and (max-width: 600px) {
+        font-size: 10px;
+    }
 `;
 
 const MovieInfoOverview = styled.div`

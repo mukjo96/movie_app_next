@@ -18,7 +18,11 @@ const { TabPane } = Tabs;
 const Descriptions = ({ details }) => {
     return (
         <Container>
-            <Tabs defaultActiveKey="1" centered={true} size="large">
+            <Tabs
+                defaultActiveKey="1"
+                centered={true}
+                style={{ marginLeft: "5px", marginRight: "5px" }}
+            >
                 <TabPane
                     tab={
                         <span>

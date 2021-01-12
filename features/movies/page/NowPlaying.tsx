@@ -73,6 +73,7 @@ const Movies = styled.div`
 
     @media screen and (max-width: 600px) {
         grid-template-columns: repeat(2, minmax(auto, 150px));
-        width: 90%;
+        max-width: 100%;
+        margin-top: 4%;
     }
 `;

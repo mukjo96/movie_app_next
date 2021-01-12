@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
-import Searchbar from "@features/common/input/searchbar";
 
-const NavLinks = () => {
+const NavLinks = (open) => {
     const navItems = [
         { title: "Now Playing", route: "nowplaying" },
         { title: "Up Coming", route: "upcoming" },
@@ -12,13 +11,12 @@ const NavLinks = () => {
     ];
 
     return (
-        <Container>
+        <Container className={open ? "show" : "hidden"}>
             {navItems.map((item, index) => (
                 <Link href={`/${item.route}`}>
                     <li key={index}>{item.title}</li>
                 </Link>
             ))}
-            <Searchbar />
         </Container>
     );
 };
@@ -42,5 +40,18 @@ const Container = styled.ul`
     li:hover {
         background-color: #ed786a;
         border-radius: 4px;
+    }
+
+    @media screen and (max-width: 768px) {
+        &.show {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+
+            li {
+                margin: 1% 0;
+            }
+        }
     }
 `;
