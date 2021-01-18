@@ -6,8 +6,9 @@ import Loading from "@features/common/Loading";
 import NavBar from "@features/home/components/navigation/NavBar";
 import { getMovieDetails } from "../api/getDetail.api";
 import DetailCard from "../components/DetailCard";
+import { detailsTypes } from "../types/detailsTypes";
 
-const MovieInfo = ({ details }) => {
+const MovieInfo = ({ details }: detailsTypes) => {
     const [isLoading, setIsLoading] = useState(false);
 
     /* useEffect(() => {

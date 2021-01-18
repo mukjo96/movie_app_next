@@ -25,7 +25,7 @@ const UpComing = () => {
         setIsLoading(false);
     }, [nowpage]);
 
-    const onChange = (pageNumber) => {
+    const onChange = (pageNumber: number) => {
         router.push(`/upcoming?page=${pageNumber}`);
     };
 

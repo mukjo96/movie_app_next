@@ -26,7 +26,7 @@ const NowPlaying = () => {
         console.log(nowpage, totalPage);
     }, [nowpage]);
 
-    const onChange = (pageNumber) => {
+    const onChange = (pageNumber: number) => {
         router.push(`/nowplaying?page=${pageNumber}`);
     };
 

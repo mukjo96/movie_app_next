@@ -15,9 +15,12 @@ const NavButtons = () => {
 export default NavButtons;
 
 const Container = styled.div`
-    margin-top: 1%;
     align-self: center;
     > * {
         margin: 0 8px;
+    }
+
+    @media screen and (max-width: 768px) {
+        margin-top: 1vh;
     }
 `;

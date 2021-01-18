@@ -27,7 +27,7 @@ const Search = () => {
         setIsLoading(false);
     }, [nowpage, text]);
 
-    const onChange = (pageNumber) => {
+    const onChange = (pageNumber: number) => {
         router.push(`/search?text=${text}&page=${pageNumber}`);
     };
 

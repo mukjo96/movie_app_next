@@ -4,9 +4,11 @@ import { Rate } from "antd";
 import Descriptions from "./Descriptions";
 import Loading from "@features/common/Loading";
 import { UserOutlined } from "@ant-design/icons";
+import { detailsTypes } from "@features/movieInfo/types/detailsTypes";
 
-const InfoDetail = (details) => {
-    const movieInfo = details.details;
+const InfoDetail = ({ details }: detailsTypes) => {
+    const movieInfo = details;
+    console.log("Info", movieInfo);
     const rate = movieInfo.vote_average;
 
     return (

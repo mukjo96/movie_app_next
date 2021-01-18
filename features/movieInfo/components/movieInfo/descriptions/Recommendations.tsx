@@ -1,4 +1,5 @@
 import Loading from "@features/common/Loading";
+import { recomType } from "@features/movieInfo/types/detailsTypes";
 import MovieCard from "@features/movies/components/MovieCard";
 import { useRouter } from "next/router";
 import React from "react";
@@ -49,8 +50,8 @@ const Recommendations = () => {
     return (
         <Container>
             <Movies>
-                {data.results.map((movie) => (
-                    <MovieCard key={movie.id} movies={movie} />
+                {data.results.map((movies: recomType) => (
+                    <MovieCard key={movies.id} movies={movies} />
                 ))}
             </Movies>
         </Container>

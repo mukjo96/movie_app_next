@@ -5,6 +5,7 @@ import Loading from "@features/common/Loading";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import { UserOutlined } from "@ant-design/icons";
+import { castType, crewType } from "@features/movieInfo/types/detailsTypes";
 
 const { Panel } = Collapse;
 
@@ -36,55 +37,59 @@ const Cast = () => {
             <Row>
                 <Col xs={{ span: 24 }} md={{ span: 10 }}>
                     <Collapse defaultActiveKey={["1"]} ghost>
-                        <Panel header="Actors" key="1">
-                            {data.cast.map((element, index) => (
-                                <Actor>
-                                    <Avatar
-                                        size={64}
-                                        icon={
-                                            element.profile_path ? (
-                                                <Image
-                                                    src={`https://www.themoviedb.org/t/p/w276_and_h350_face${element.profile_path}`}
-                                                />
-                                            ) : (
-                                                <UserOutlined />
-                                            )
-                                        }
-                                    />
-                                    <ActorDesc>
-                                        <Name>{element.name}</Name>
-                                        <Character>
-                                            {element.character}
-                                        </Character>
-                                    </ActorDesc>
-                                </Actor>
-                            ))}
+                        <Panel header="출연진" key="1">
+                            {data.cast.map(
+                                (element: castType, index: number) => (
+                                    <Actor key={index}>
+                                        <Avatar
+                                            size={64}
+                                            icon={
+                                                element.profile_path ? (
+                                                    <Image
+                                                        src={`https://www.themoviedb.org/t/p/w276_and_h350_face${element.profile_path}`}
+                                                    />
+                                                ) : (
+                                                    <UserOutlined />
+                                                )
+                                            }
+                                        />
+                                        <ActorDesc>
+                                            <Name>{element.name}</Name>
+                                            <Character>
+                                                {element.character}
+                                            </Character>
+                                        </ActorDesc>
+                                    </Actor>
+                                )
+                            )}
                         </Panel>
                     </Collapse>
                 </Col>
                 <Col xs={{ span: 24 }} md={{ span: 10, offset: 4 }}>
                     <Collapse defaultActiveKey={["1"]} ghost>
-                        <Panel header="Crews" key="1">
-                            {data.crew.map((element, index) => (
-                                <Actor>
-                                    <Avatar
-                                        size={64}
-                                        icon={
-                                            element.profile_path ? (
-                                                <Image
-                                                    src={`https://www.themoviedb.org/t/p/w276_and_h350_face${element.profile_path}`}
-                                                />
-                                            ) : (
-                                                <UserOutlined />
-                                            )
-                                        }
-                                    />
-                                    <ActorDesc>
-                                        <Name>{element.name}</Name>
-                                        <Character>{element.job}</Character>
-                                    </ActorDesc>
-                                </Actor>
-                            ))}
+                        <Panel header="제작진" key="1">
+                            {data.crew.map(
+                                (element: crewType, index: number) => (
+                                    <Actor key={index}>
+                                        <Avatar
+                                            size={64}
+                                            icon={
+                                                element.profile_path ? (
+                                                    <Image
+                                                        src={`https://www.themoviedb.org/t/p/w276_and_h350_face${element.profile_path}`}
+                                                    />
+                                                ) : (
+                                                    <UserOutlined />
+                                                )
+                                            }
+                                        />
+                                        <ActorDesc>
+                                            <Name>{element.name}</Name>
+                                            <Character>{element.job}</Character>
+                                        </ActorDesc>
+                                    </Actor>
+                                )
+                            )}
                         </Panel>
                     </Collapse>
                 </Col>
@@ -107,7 +112,7 @@ const Actor = styled.div`
 `;
 
 const ActorDesc = styled.div`
-    margin-left: 1em;
+    margin-left: 1vh;
 `;
 
 const Name = styled.h3`

@@ -5,8 +5,10 @@ import ReactPlayer from "react-player/youtube";
 import { getMovieVideos } from "@features/movieInfo/api/getDetail.api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { PlayCircleTwoTone } from "@ant-design/icons";
+import { posterType } from "@features/movieInfo/types/detailsTypes";
+import { faPlayCircle } from "@fortawesome/free-solid-svg-icons";
 
-const BackgroundPoster = ({ backdrop_path, movieId }) => {
+const BackgroundPoster = ({ backdrop_path, movieId }: posterType) => {
     const [visible, setVisible] = useState(false);
     const [movieVideo, setMovieVideo] = useState();
     useEffect(() => {
@@ -33,12 +35,13 @@ const BackgroundPoster = ({ backdrop_path, movieId }) => {
                 {movieVideo ? (
                     <>
                         <Layer>
-                            <PlayCircleTwoTone
-                                twoToneColor="#f26b5e"
+                            <FontAwesomeIcon
+                                icon={faPlayCircle}
                                 style={{
+                                    width: "10vh",
                                     textAlign: "center",
-                                    fontSize: "6em",
-                                    color: "#000",
+                                    color: "#ffff",
+                                    filter: "drop-shadow(3px 6px #272634)",
                                     opacity: "0.7",
                                     cursor: "pointer",
                                 }}

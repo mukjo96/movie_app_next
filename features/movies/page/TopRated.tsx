@@ -25,7 +25,7 @@ const TopRated = () => {
         setIsLoading(false);
     }, [nowpage]);
 
-    const onChange = (pageNumber) => {
+    const onChange = (pageNumber: number) => {
         router.push(`/toprated?page=${pageNumber}`);
     };
 

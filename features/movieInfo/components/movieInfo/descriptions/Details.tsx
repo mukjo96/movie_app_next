@@ -6,38 +6,42 @@ import Loading from "@features/common/Loading";
 
 const { Paragraph, Link } = Typography;
 
-const Details = ({ details }) => {
-    const movieInfo = details.details;
-    console.log(movieInfo);
+const DetailInfos = ({ details }) => {
     return (
         <Container>
             <Row>
-                <Col xs={{ span: 24 }} md={{ span: 6 }}>
+                <Col xs={{ span: 24 }} md={{ span: 8 }}>
                     <div>
-                        <Divider orientation="center">GENRES</Divider>
+                        <Divider orientation="center">장르</Divider>
 
-                        {movieInfo.genres.map((genre, index) => (
-                            <Tag
-                                key={index}
-                                color={
-                                    index % 3 === 0
-                                        ? "geekblue"
-                                        : index % 3 === 1
-                                        ? "magenta"
-                                        : "orange"
-                                }
-                                style={{ marginTop: "6px" }}
-                            >
-                                {genre.name}
-                            </Tag>
-                        ))}
+                        {details.genres.map(
+                            (
+                                genre: { id: number; name: string },
+                                index: number
+                            ) => (
+                                <Tag
+                                    key={index}
+                                    color={
+                                        index % 3 === 0
+                                            ? "geekblue"
+                                            : index % 3 === 1
+                                            ? "magenta"
+                                            : "orange"
+                                    }
+                                    style={{ marginTop: "6px" }}
+                                >
+                                    {genre.name}
+                                </Tag>
+                            )
+                        )}
                     </div>
                     <div>
-                        <Divider orientation="center">
-                            PRODUCTION COUNTRIES
-                        </Divider>
-                        {movieInfo.production_countries.map(
-                            (country, index) => (
+                        <Divider orientation="center">제작 국가</Divider>
+                        {details.production_countries.map(
+                            (
+                                country: { iso_3166_1: string; name: string },
+                                index: number
+                            ) => (
                                 <Tag
                                     key={index}
                                     color={
@@ -54,22 +58,22 @@ const Details = ({ details }) => {
                         )}
                     </div>
                     <Website>
-                        <Divider orientation="center">OFFICIAL WEBSITE</Divider>
-                        {movieInfo.homepage ? (
+                        <Divider orientation="center">공식 웹사이트</Divider>
+                        {details.homepage ? (
                             <Link
                                 style={{ cursor: "pointer" }}
-                                href={movieInfo.homepage}
+                                href={details.homepage}
                                 target="_blank"
                             >
-                                {movieInfo.homepage}
+                                {details.homepage}
                             </Link>
                         ) : (
-                            <span>Sorry, We don't have website</span>
+                            <span>공식 웹사이트가 없습니다.</span>
                         )}
                     </Website>
                 </Col>
-                <Col xs={{ span: 24 }} md={{ span: 16, offset: 2 }}>
-                    <Divider orientation="left">OVERVIEW</Divider>
+                <Col xs={{ span: 24 }} md={{ span: 14, offset: 2 }}>
+                    <Divider orientation="left">줄거리</Divider>
                     <Paragraph
                         ellipsis={{
                             rows: 2,
@@ -77,23 +81,33 @@ const Details = ({ details }) => {
                             symbol: "more",
                         }}
                     >
-                        {movieInfo.overview}
+                        {details.overview}
                     </Paragraph>
                 </Col>
             </Row>
             <Row align="middle">
-                <Divider orientation="left">PRODUCTION COMPANIES</Divider>
+                <Divider orientation="left">제작사</Divider>
                 <Companies>
-                    {movieInfo.production_companies.map((company, index) => (
-                        <li key={index}>{toImg(company)}</li>
-                    ))}
+                    {details.production_companies.map(
+                        (
+                            company: {
+                                name: string;
+                                id: number;
+                                logo_path: string | null;
+                                origin_country: string;
+                            },
+                            index: number
+                        ) => (
+                            <li key={index}>{toImg(company)}</li>
+                        )
+                    )}
                 </Companies>
             </Row>
         </Container>
     );
 };
 
-export default Details;
+export default DetailInfos;
 const Container = styled.div`
     width: 90%;
     margin: 0 auto;

@@ -4,8 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
+import { moviesType } from "../types/moviesTypes";
 
-const MovieCard = ({ movies }) => {
+const MovieCard = ({ movies }: moviesType) => {
     return (
         <Container>
             <Link href={`/movie/${movies.id}`}>

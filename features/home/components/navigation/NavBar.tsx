@@ -48,13 +48,15 @@ const Container = styled.nav`
     @media screen and (max-width: 768px) {
         flex-direction: column;
         align-items: flex-start;
-        pading: 8px 24px;
+        padding: 8px 24px;
     }
 `;
 
 const Hamburger = styled.div`
     &.hidden {
+        flex-grow: 1;
         display: flex;
+        align-items: center;
     }
 
     @media screen and (max-width: 768px) {

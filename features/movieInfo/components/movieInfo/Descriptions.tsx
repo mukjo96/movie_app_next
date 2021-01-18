@@ -12,22 +12,32 @@ import Cast from "./descriptions/Cast";
 import Loading from "@features/common/Loading";
 import Recommendations from "./descriptions/Recommendations";
 import Comments from "./descriptions/Comments";
+import { detailsTypes } from "@features/movieInfo/types/detailsTypes";
+import { useWindowSize } from "./descriptions/getWindowSize";
 
 const { TabPane } = Tabs;
 
-const Descriptions = ({ details }) => {
+const Descriptions = ({ details }: detailsTypes) => {
+    const size = useWindowSize();
     return (
         <Container>
             <Tabs
                 defaultActiveKey="1"
                 centered={true}
-                style={{ marginLeft: "5px", marginRight: "5px" }}
+                size={
+                    size.width > 992
+                        ? "large"
+                        : size.width > 768
+                        ? "default"
+                        : "small"
+                }
+                tabBarGutter={size.width > 992 ? 48 : size.width > 768 ? 24 : 8}
             >
                 <TabPane
                     tab={
                         <span>
                             <ReadOutlined />
-                            Details
+                            상세 정보
                         </span>
                     }
                     key="1"
@@ -38,7 +48,7 @@ const Descriptions = ({ details }) => {
                     tab={
                         <span>
                             <AuditOutlined />
-                            Cast
+                            출연/제작
                         </span>
                     }
                     key="2"
@@ -49,7 +59,7 @@ const Descriptions = ({ details }) => {
                     tab={
                         <span>
                             <VideoCameraOutlined />
-                            Recommendations
+                            추천 영화
                         </span>
                     }
                     key="3"
@@ -60,7 +70,7 @@ const Descriptions = ({ details }) => {
                     tab={
                         <span>
                             <CommentOutlined />
-                            Comments
+                            댓글
                         </span>
                     }
                     key="4"

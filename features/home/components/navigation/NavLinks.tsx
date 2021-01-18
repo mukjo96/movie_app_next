@@ -13,8 +13,8 @@ const NavLinks = (open) => {
     return (
         <Container className={open ? "show" : "hidden"}>
             {navItems.map((item, index) => (
-                <Link href={`/${item.route}`}>
-                    <li key={index}>{item.title}</li>
+                <Link key={index} href={`/${item.route}`}>
+                    <li>{item.title}</li>
                 </Link>
             ))}
         </Container>
@@ -42,12 +42,19 @@ const Container = styled.ul`
         border-radius: 4px;
     }
 
+    @media screen and (max-width: 860px) {
+        li {
+            font-size: 14px;
+        }
+    }
+
     @media screen and (max-width: 768px) {
         &.show {
             display: flex;
             flex-direction: column;
             align-items: center;
             width: 100%;
+            margin-bottom: 1vh;
 
             li {
                 margin: 1% 0;
