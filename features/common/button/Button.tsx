@@ -1,30 +1,57 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle, faGithub } from "@fortawesome/free-brands-svg-icons";
+import styled from "styled-components";
 
 type ButtonProps = {
-	value: string;
-	onClick: () => void;
+    value: string;
+    onClick: () => void;
+    icon?: string;
 };
 
-const Button = ({ value, onClick }: ButtonProps) => {
-	return <CustomButton onClick={onClick}>{value}</CustomButton>;
+const Button = ({ value, onClick, icon }: ButtonProps) => {
+    if (icon === "google") {
+        return (
+            <CustomButton onClick={onClick} icon={icon}>
+                <FontAwesomeIcon
+                    style={{ marginRight: "8px", verticalAlign: "top" }}
+                    icon={faGoogle}
+                    width="14px"
+                />
+                <Value>{value}</Value>
+            </CustomButton>
+        );
+    } else if (icon === "github") {
+        return (
+            <CustomButton onClick={onClick} icon={icon}>
+                <FontAwesomeIcon
+                    style={{ marginRight: "8px", verticalAlign: "top" }}
+                    icon={faGithub}
+                    width="14px"
+                />
+                <Value>{value}</Value>
+            </CustomButton>
+        );
+    }
+    return <CustomButton onClick={onClick}>{value}</CustomButton>;
 };
+
+const CustomButton = styled.button<{ icon?: string }>`
+    border: none;
+    max-width: 320px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 30px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    text-align: center;
+    background: ${(props) => (props.icon ? "white" : "#04aaff")};
+    color: ${(props) => (props.icon ? "black" : "white")};
+    margin-top: 10px;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px #bfc2c6, -5px -5px 10px #ffffff;
+`;
+
+const Value = styled.span``;
 
 export default Button;
-
-const CustomButton = styled.button`
-	border: none;
-	max-width: 320px;
-	width: 100%;
-	padding: 10px;
-	border-radius: 30px;
-	margin-bottom: 10px;
-	font-size: 12px;
-	color: black;
-	text-align: center;
-	background: #04aaff;
-	color: white;
-	margin-top: 10px;
-	cursor: pointer;
-	box-shadow: 5px 5px 10px #bfc2c6, -5px -5px 10px #ffffff;
-`;
