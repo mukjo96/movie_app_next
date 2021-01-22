@@ -6,6 +6,7 @@ type InputProps = {
     value: string;
     onChange: (value: string) => void;
     placeholder: string;
+    type?: string;
     required?: boolean;
 };
 
@@ -14,12 +15,13 @@ const Input = ({
     placeholder,
     value,
     onChange,
+    type = "text",
     required,
 }: InputProps) => {
     return (
         <CustomInput
             name={name}
-            type="text"
+            type={type}
             placeholder={placeholder}
             required={required}
             value={value}

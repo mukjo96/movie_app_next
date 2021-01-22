@@ -7,9 +7,10 @@ type ButtonProps = {
     value: string;
     onClick: () => void;
     icon?: string;
+    type?: "button" | "submit" | "reset";
 };
 
-const Button = ({ value, onClick, icon }: ButtonProps) => {
+const Button = ({ value, onClick, icon, type }: ButtonProps) => {
     if (icon === "google") {
         return (
             <CustomButton onClick={onClick} icon={icon}>
@@ -33,7 +34,11 @@ const Button = ({ value, onClick, icon }: ButtonProps) => {
             </CustomButton>
         );
     }
-    return <CustomButton onClick={onClick}>{value}</CustomButton>;
+    return (
+        <CustomButton onClick={onClick} type={type}>
+            {value}
+        </CustomButton>
+    );
 };
 
 const CustomButton = styled.button<{ icon?: string }>`

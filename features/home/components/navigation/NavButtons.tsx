@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import LogoutButton from "@features/common/button/LogoutButton";
 import ProfileButton from "@features/common/button/ProfileButton";
+import Link from "next/link";
 
 const NavButtons = () => {
     return (
@@ -15,6 +16,7 @@ const NavButtons = () => {
 export default NavButtons;
 
 const Container = styled.div`
+    display: flex;
     align-self: center;
     > * {
         margin: 0 8px;

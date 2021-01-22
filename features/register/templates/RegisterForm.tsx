@@ -5,30 +5,19 @@ import styled from "styled-components";
 import Link from "next/link";
 import { firebaseClient } from "../../../firebase/firebaseClient";
 
-const LoginForm = () => {
+const RegisterForm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const onLogin = async () => {
+    const onRegister = async () => {
         try {
             await firebaseClient
                 .auth()
-                .signInWithEmailAndPassword(email, password);
+                .createUserWithEmailAndPassword(email, password);
             window.location.href = "/";
         } catch (error) {
             alert(error.message);
         }
-    };
-
-    const onGoogleLogin = async () => {
-        let provider = new firebaseClient.auth.GoogleAuthProvider();
-        await firebaseClient.auth().signInWithPopup(provider);
-        window.location.href = "/";
-    };
-    const onGithubLogin = async () => {
-        let provider = new firebaseClient.auth.GithubAuthProvider();
-        await firebaseClient.auth().signInWithPopup(provider);
-        window.location.href = "/";
     };
 
     return (
@@ -48,24 +37,13 @@ const LoginForm = () => {
                 value={password}
                 onChange={(value: string) => setPassword(value)}
             />
-            <Button value="로그인" type="submit" onClick={onLogin} />
-
-            <Link href="register">회원 가입</Link>
-            <Button
-                value="Google 로그인 하기"
-                icon="google"
-                onClick={onGoogleLogin}
-            />
-            <Button
-                value="Github 로그인 하기"
-                icon="github"
-                onClick={onGithubLogin}
-            />
+            <Button value="회원가입" type="submit" onClick={onRegister} />
+            <Link href="/login">로그인하러 가기</Link>
         </Container>
     );
 };
 
-export default LoginForm;
+export default RegisterForm;
 
 const Container = styled.div`
     width: 100%;
