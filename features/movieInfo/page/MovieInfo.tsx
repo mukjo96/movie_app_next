@@ -45,4 +45,5 @@ const Details = styled.div``;
 
 const Block = styled.div`
     height: 50px;
+    background-color: #f9f9f9;
 `;

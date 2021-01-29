@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
 
@@ -17,7 +18,7 @@ const dataPropsMapper = {
     },
     movieNm: {
         title: "영화 제목",
-        parseData: (data) => data,
+        parseData: (data) => <Link href={`/search?text=${data}`}>{data}</Link>,
     },
     audiAcc: {
         title: "관객수",
@@ -32,16 +33,17 @@ const BoxOfficeList = ({ title, dataProps, datas }) => {
             <Header>{title}</Header>
             <Table>
                 <TableHeader>
-                    {dataProps.map((props) => (
-                        <th className={props}>
+                    {dataProps.map((props, index) => (
+                        <th key={index} className={props}>
                             {dataPropsMapper[props].title}
                         </th>
                     ))}
                 </TableHeader>
                 {datas.map((data) => (
                     <TableRow>
-                        {dataProps.map((props) => (
+                        {dataProps.map((props, index) => (
                             <TableData
+                                key={index}
                                 className={props}
                                 data={data[props]}
                                 props={props}
@@ -71,24 +73,27 @@ const Header = styled.h3`
     margin: 0 0 1.25em;
     font-weight: 600;
     text-transform: uppercase;
-    color: #888;
+    color: #575757;
     text-align: center;
 `;
 
 const Table = styled.table`
-    background-color: #f0f0f0;
+    background-color: #d6d6d6;
     width: 100%;
     table-layout: fixed;
     border-radius: 10px;
     box-shadow: 10px 10px 20px #d4d4d4, -10px -10px 20px #ffffff;
+    padding: 8px;
 `;
 
 const TableHeader = styled.tr`
-    font-size: 10px;
+    font-size: 12px;
     white-space: nowrap;
     text-align: center;
     th {
         padding: 5px;
+        padding-right: 10px;
+        padding-left: 10px;
     }
     .rank {
         width: 10%;
@@ -105,7 +110,7 @@ const TableHeader = styled.tr`
 `;
 
 const TableRow = styled.tr`
-    font-size: 10px;
+    font-size: 12px;
     text-align: center;
     white-space: nowrap;
 `;
@@ -114,6 +119,16 @@ const TableData = styled.td<TableDataProps>`
     padding: 5px;
     overflow: hidden;
     text-overflow: ellipsis;
+    a {
+        text-decoration: none;
+        cursor: pointer;
+        color: #333333;
+
+        :hover {
+            text-decoration: underline;
+        }
+    }
+
     color: ${(props) =>
         props.props == "rankInten"
             ? props.data < 0

@@ -20,6 +20,7 @@ const DetailCard = ({ details }: detailsTypes) => {
 export default DetailCard;
 
 const Container = styled.div`
+    background-color: #f9f9f9;
     height: 100%;
-    margin-bottom: 10%;
+    padding-bottom: 10%;
 `;

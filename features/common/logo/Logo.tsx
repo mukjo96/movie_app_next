@@ -38,9 +38,11 @@ const LogoName = styled.a`
     text-decoration: none;
     font-family: "Sansita Swashed", cursive;
     font-weight: 500;
-    color: #ed786a;
+    color: #333333;
+    text-shadow: 2px 2px #d6d6d6;
     font-size: 24px;
     margin-left: 5px;
+    padding-bottom: 3px;
 
     @media screen and (max-widht: 860px) {
         font-size: 18px;

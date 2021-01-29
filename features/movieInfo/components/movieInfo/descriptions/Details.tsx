@@ -73,20 +73,12 @@ const DetailInfos = ({ details }) => {
                     </Website>
                 </Col>
                 <Col xs={{ span: 24 }} md={{ span: 14, offset: 2 }}>
-                    <Divider orientation="left">줄거리</Divider>
-                    <Paragraph
-                        ellipsis={{
-                            rows: 2,
-                            expandable: true,
-                            symbol: "more",
-                        }}
-                    >
-                        {details.overview}
-                    </Paragraph>
+                    <Divider orientation="center">줄거리</Divider>
+                    <Paragraph>{details.overview}</Paragraph>
                 </Col>
             </Row>
             <Row align="middle">
-                <Divider orientation="left">제작사</Divider>
+                <StyledDivider orientation="left">제작사</StyledDivider>
                 <Companies>
                     {details.production_companies.map(
                         (
@@ -131,6 +123,25 @@ const Companies = styled.div`
             width: 100%;
 
             justify-content: center;
+        }
+    }
+`;
+
+const StyledDivider = styled(Divider)`
+    ::before {
+        width: 13% !important;
+    }
+
+    ::after {
+        width: 87% !important;
+    }
+
+    @media screen and (max-width: 768px) {
+        ::before {
+            width: 50% !important;
+        }
+        ::after {
+            width: 50% !important;
         }
     }
 `;

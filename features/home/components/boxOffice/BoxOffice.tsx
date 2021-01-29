@@ -76,10 +76,10 @@ const Header = styled.h2`
     font-size: 1.65em;
     font-weight: 400;
     letter-spacing: 4px;
-    color: #888;
+    color: #a0a0a0;
     strong {
         font-weight: 600;
-        color: #666;
+        color: #575757;
     }
     margin-bottom: 1em;
 `;

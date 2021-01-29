@@ -8,7 +8,7 @@ const ProfileButton = () => {
         <Link href="/login">
             <FontAwesomeIcon
                 icon={faUser}
-                color={"#444"}
+                color={"#333333"}
                 height="16px"
                 style={{ cursor: "pointer" }}
             />

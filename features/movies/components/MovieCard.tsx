@@ -24,23 +24,23 @@ const MovieCard = ({ movies }: moviesType) => {
                                 <MovieInfoTitle>{movies.title}</MovieInfoTitle>
                             </MovieInfoTop>
                             <div>
-                                <hr />
+                                <MiddleLine />
                             </div>
                             <MovieInfoBottom>
-                                <MovieInfoOverview>
-                                    {movies.overview.substr(0, 70)}
+                                <MovieInfoDetails>
+                                    {movies.overview.substr(0, 50)}
                                     {movies.overview.length > 140 ? "..." : ""}
-                                </MovieInfoOverview>
+                                </MovieInfoDetails>
                                 <MovieInfoVote>
                                     <FontAwesomeIcon
                                         style={{
                                             margin: "0 auto",
-                                            color: "yellow",
+                                            color: "#FECEA8",
                                         }}
                                         className="star"
                                         icon={faStar}
                                     />
-                                    {movies.vote_average}
+                                    {movies.vote_average.toFixed(1)}
                                 </MovieInfoVote>
                             </MovieInfoBottom>
                         </MovieInfo>
@@ -61,6 +61,8 @@ const Container = styled.div`
 `;
 
 const Moviecard = styled.div`
+    justify-content: center;
+    display: flex;
     position: relative;
     margin: 20px 10px;
     max-width: 100%;
@@ -73,10 +75,13 @@ const MovieInfo = styled.div`
     position: absolute;
     bottom: 0;
     padding: 8px;
-    width: 250px;
+    width: 230px;
+    margin-bottom: 10px;
     align-self: end;
-    background-color: white;
-    border-radius: 0 0 8px 8px;
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
     /*margin: 8px;*/
     visibility: hidden;
     transition: visibility 500ms;
@@ -123,7 +128,17 @@ const MovieInfoTop = styled.div`
     }
 `;
 
-const MovieInfoTitle = styled.div``;
+const MovieInfoTitle = styled.h3`
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+`;
+
+const MiddleLine = styled.hr`
+    color: #333333;
+    border-bottom: 0px;
+    border: thin solid #333333;
+`;
 
 const MovieInfoBottom = styled.div`
     display: flex;
@@ -137,7 +152,7 @@ const MovieInfoBottom = styled.div`
     }
 `;
 
-const MovieInfoOverview = styled.div`
+const MovieInfoDetails = styled.div`
     display: flex;
     flex-wrap: wrap;
     text-align: left;
@@ -148,7 +163,7 @@ const MovieInfoVote = styled.div`
     display: flex;
     flex-direction: column;
     border-radius: 8px;
-    background-color: red;
+    background-color: #e84a5f;
     padding: 4px;
     color: white;
     text-align: center;

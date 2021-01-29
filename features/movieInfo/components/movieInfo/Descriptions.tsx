@@ -21,7 +21,7 @@ const Descriptions = ({ details }: detailsTypes) => {
     const size = useWindowSize();
     return (
         <Container>
-            <Tabs
+            <StyledTabs
                 defaultActiveKey="1"
                 centered={true}
                 size={
@@ -37,7 +37,7 @@ const Descriptions = ({ details }: detailsTypes) => {
                     tab={
                         <span>
                             <ReadOutlined />
-                            상세 정보
+                            <span className="tabTitle">상세 정보</span>
                         </span>
                     }
                     key="1"
@@ -48,7 +48,7 @@ const Descriptions = ({ details }: detailsTypes) => {
                     tab={
                         <span>
                             <AuditOutlined />
-                            출연/제작
+                            <span className="tabTitle">출연/제작</span>
                         </span>
                     }
                     key="2"
@@ -59,7 +59,7 @@ const Descriptions = ({ details }: detailsTypes) => {
                     tab={
                         <span>
                             <VideoCameraOutlined />
-                            추천 영화
+                            <span className="tabTitle">추천 영화</span>
                         </span>
                     }
                     key="3"
@@ -70,18 +70,41 @@ const Descriptions = ({ details }: detailsTypes) => {
                     tab={
                         <span>
                             <CommentOutlined />
-                            댓글
+                            <span className="tabTitle">댓글</span>
                         </span>
                     }
                     key="4"
                 >
                     <Comments />
                 </TabPane>
-            </Tabs>
+            </StyledTabs>
         </Container>
     );
 };
 
 export default Descriptions;
 
-const Container = styled.div``;
+const Container = styled.div`
+    margin-top: 12px;
+    background-color: white;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.16), 0 4px 8px rgba(0, 0, 0, 0.23);
+    padding-bottom: 24px;
+`;
+
+const StyledTabs = styled(Tabs)`
+    @media screen and (max-width: 768px) {
+        .ant-tabs-nav-list {
+            width: 100%;
+            justify-content: space-evenly;
+        }
+        .anticon {
+            margin-right: 0;
+            margin-left: 0;
+            padding: 0 12px;
+        }
+        .tabTitle {
+            display: none;
+        }
+    }
+`;

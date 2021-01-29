@@ -7,7 +7,7 @@ const LogoutButton = () => {
     return (
         <FontAwesomeIcon
             icon={faSignOutAlt}
-            color={"#444"}
+            color={"#333333"}
             height="16px"
             style={{ cursor: "pointer" }}
             onClick={async () => {

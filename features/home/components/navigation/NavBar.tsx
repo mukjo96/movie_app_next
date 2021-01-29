@@ -23,7 +23,7 @@ const NavBar = () => {
                     menuClicked={() => setOpen(!open)}
                     width={18}
                     height={15}
-                    color="#444"
+                    color="#2a363b"
                     position="absolute"
                 />
             </ToggleBtn>
@@ -39,6 +39,7 @@ const Container = styled.nav`
     margin: 0 auto;
     padding: 8px 12px;
     align-items: center;
+    background-color: #f9f9f9;
 
     @media screen and (min-width: 1280px) {
         width: 1280px;
@@ -65,7 +66,7 @@ const Hamburger = styled.div`
             flex-direction: column;
             align-items: center;
             width: 100%;
-
+            box-shadow: 0 2px rgba(0, 0, 0, 0.12), 0 1px rgba(0, 0, 0, 0.24);
             li {
                 width: 100%;
                 text-align: center;

@@ -35,6 +35,7 @@ const TopRated = () => {
                 showQuickJumper
                 style={{
                     textAlign: "center",
+                    marginTop: "20px",
                 }}
                 showSizeChanger={false}
                 defaultPageSize={20}
@@ -63,7 +64,7 @@ const Movies = styled.div`
     margin: 0 auto;
     grid-template-columns: repeat(auto-fill, minmax(auto, 260px));
     grid-gap: 24px;
-    padding-top: 1%;
+    padding-top: 8px;
     justify-content: center;
 
     @media screen and (min-width: 1280px) {

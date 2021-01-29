@@ -28,17 +28,20 @@ const Container = styled.ul`
     align-items: center;
     justify-content: space-between;
     margin: 0 auto;
+    padding-inline-start: 0px;
     li {
         list-style: none;
         font-family: "Sansita Swashed", cursive;
         font-size: 15px;
         padding: 3px;
+        color: #333333;
         cursor: pointer;
         margin-right: 5px;
     }
 
     li:hover {
-        background-color: #ed786a;
+        background-color: #333333;
+        color: #f9f9f9;
         border-radius: 4px;
     }
 
