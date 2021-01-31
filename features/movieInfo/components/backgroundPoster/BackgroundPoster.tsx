@@ -79,13 +79,21 @@ const Layer = styled.div`
 
 const Container = styled.div`
     width: 100%;
-    height: 500px;
+    height: ${(800 / 1920) * 100}vw;
+
+    @media screen and (min-width: 1280px) {
+        width: 1280px;
+        height: 533px;
+    }
 `;
 
 const Background = styled.div`
     display: table;
     width: 100%;
     height: 100%;
+
+    margin: 0 auto;
+
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

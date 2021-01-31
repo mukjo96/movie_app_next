@@ -32,7 +32,6 @@ const MovieInfo = ({ details }: detailsTypes) => {
                     <Details>
                         <DetailCard details={details} />
                     </Details>
-                    <Block></Block>
                 </>
             )}
         </Fragment>
@@ -42,8 +41,3 @@ const MovieInfo = ({ details }: detailsTypes) => {
 export default MovieInfo;
 
 const Details = styled.div``;
-
-const Block = styled.div`
-    height: 50px;
-    background-color: #f9f9f9;
-`;

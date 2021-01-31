@@ -39,7 +39,6 @@ const Container = styled.nav`
     margin: 0 auto;
     padding: 8px 12px;
     align-items: center;
-    background-color: #f9f9f9;
 
     @media screen and (min-width: 1280px) {
         width: 1280px;

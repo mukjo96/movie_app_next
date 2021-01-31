@@ -7,7 +7,7 @@ const { Search } = Input;
 const Searchbar = () => {
     const router = useRouter();
 
-    const onSearch = (value) => {
+    const onSearch = (value: string) => {
         router.push(`/search?text=${value}`);
     };
 

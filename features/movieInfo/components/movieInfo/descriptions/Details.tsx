@@ -182,5 +182,6 @@ function nationtoKR(s) {
     else if (s === "Georgia") return "조지아";
     else if (s === "Croatia") return "크로아티아";
     else if (s === "Serbia") return "세르비아";
+    else if (s === "Thailand") return "태국";
     else return s;
 }
