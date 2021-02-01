@@ -1,39 +1,38 @@
-import React, { Fragment, useEffect, useState } from "react";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import React, { Fragment } from "react";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import Loading from "@features/common/Loading";
-import NavBar from "@features/home/components/navigation/NavBar";
-import { getMovieDetails } from "../api/getDetail.api";
 import DetailCard from "../components/DetailCard";
-import { detailsTypes } from "../types/detailsTypes";
+import useSWR from "swr";
 
-const MovieInfo = ({ details }: detailsTypes) => {
-    const [isLoading, setIsLoading] = useState(false);
+const MovieInfo = () => {
+    const router = useRouter();
+    const id = router.query.movieId;
 
-    /* useEffect(() => {
-        async function fetchDetails() {
-            const movieInfo = await getMovieDetails(movieId);
-            setDetails(movieInfo);
-            console.log("info", movieInfo);
-        }
-        if (movieId !== 0) {
-            fetchDetails();
-            setIsLoading(false);
-        }
-    }, [movieId]); */
+    const { data, error } = useSWR(
+        `https://api.themoviedb.org/3/movie/${id}?api_key=cfaaa8c5177462f54ee54a30c746dca3&language=ko-KR`
+    );
+
+    console.log(data);
+    if (error) return <div>failed to load</div>;
+    if (!data)
+        return (
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    marginTop: "2em",
+                }}
+            >
+                <Loading />
+            </div>
+        );
 
     return (
         <Fragment>
-            {isLoading ? (
-                <Loading />
-            ) : (
-                <>
-                    <Details>
-                        <DetailCard details={details} />
-                    </Details>
-                </>
-            )}
+            <Details>
+                <DetailCard details={data} />
+            </Details>
         </Fragment>
     );
 };

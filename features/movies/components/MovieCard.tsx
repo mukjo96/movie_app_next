@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
-import { moviesType } from "../types/moviesTypes";
+import { moviesType, RateType, TitleType } from "../types/moviesTypes";
 
 const MovieCard = ({ movies }: moviesType) => {
     return (
@@ -21,7 +21,24 @@ const MovieCard = ({ movies }: moviesType) => {
                         </MoviePoster>
                         <MovieInfo>
                             <MovieInfoTop>
-                                <MovieInfoTitle>{movies.title}</MovieInfoTitle>
+                                <MovieInfoTitle title={movies.title}>
+                                    {movies.title}
+                                </MovieInfoTitle>
+                                <Vote>
+                                    <MovieInfoVote rate={movies.vote_average}>
+                                        {/* <FontAwesomeIcon
+                                            style={{
+                                                margin: "0 auto",
+                                                color: "#FECEA8",
+                                            }}
+                                            width="16px"
+                                            className="star"
+                                            icon={faStar}
+                                        /> */}
+                                        {movies.vote_average.toFixed(1)}
+                                    </MovieInfoVote>
+                                    <Block></Block>
+                                </Vote>
                             </MovieInfoTop>
                             <div>
                                 <MiddleLine />
@@ -31,18 +48,6 @@ const MovieCard = ({ movies }: moviesType) => {
                                     {movies.overview.substr(0, 50)}
                                     {movies.overview.length > 140 ? "..." : ""}
                                 </MovieInfoDetails>
-                                <MovieInfoVote>
-                                    <FontAwesomeIcon
-                                        style={{
-                                            margin: "0 auto",
-                                            color: "#FECEA8",
-                                        }}
-                                        width="16px"
-                                        className="star"
-                                        icon={faStar}
-                                    />
-                                    {movies.vote_average.toFixed(1)}
-                                </MovieInfoVote>
                             </MovieInfoBottom>
                         </MovieInfo>
                     </Moviecard>
@@ -118,8 +123,11 @@ const MovieImg = styled.img`
 `;
 
 const MovieInfoTop = styled.div`
+    display: flex;
+    justify-content: space-between;
     text-align: left;
     font-weight: bolder;
+    margin-top: -6px;
 
     @media screen and (max-width: 600px) {
         width: 125px;
@@ -127,11 +135,18 @@ const MovieInfoTop = styled.div`
     }
 `;
 
-const MovieInfoTitle = styled.h3`
+const MovieInfoTitle = styled.span<TitleType>`
     color: #f9f9f9;
     font-size: 16px;
+    font-size: ${(props) =>
+        props.title.length > 20
+            ? "11px"
+            : props.title.length > 16
+            ? "14px"
+            : "16px"};
     font-weight: bold;
     margin: 0;
+    line-height: 34px;
 `;
 
 const MiddleLine = styled(Divider)`
@@ -160,13 +175,31 @@ const MovieInfoDetails = styled.div`
     margin-right: 5px;
 `;
 
-const MovieInfoVote = styled.div`
+const MovieInfoVote = styled.div<RateType>`
     display: flex;
-    width: 40px;
+    width: 30px;
+    height: 30px;
     flex-direction: column;
+    justify-content: center;
     border-radius: 8px;
-    background-color: #e84a5f;
-    padding: 4px;
-    color: white;
+    background-color: ${(props) =>
+        props.rate >= 8.0
+            ? "#48b80f"
+            : props.rate > 6.5
+            ? "#ffb300"
+            : "#ff2929"};
+    padding: 2px;
+    margin: 2px;
+    font-size: 14px;
+    color: #f9f9f9;
+    font-family: "Sansita Swashed";
+    font-weight: bold;
     text-align: center;
+`;
+
+const Vote = styled.div`
+    display: block;
+`;
+const Block = styled.div`
+    height: 3px;
 `;

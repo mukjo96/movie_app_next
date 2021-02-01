@@ -33,3 +33,11 @@ export type movieType = {
     video: boolean;
     vote_average: number;
 };
+
+export type RateType = {
+    rate: number;
+};
+
+export type TitleType = {
+    title: string;
+};

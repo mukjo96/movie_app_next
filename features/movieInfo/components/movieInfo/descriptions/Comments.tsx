@@ -6,7 +6,7 @@ import styled from "styled-components";
 const { Paragraph } = Typography;
 const { TextArea } = Input;
 
-const CommentList = ({ comments }) => (
+/* const CommentList = ({ comments }) => (
     <List
         dataSource={comments}
         header={`${comments.length} ${
@@ -15,7 +15,7 @@ const CommentList = ({ comments }) => (
         itemLayout="horizontal"
         renderItem={(props) => <Comment {...props} />}
     />
-);
+); */
 
 const Editor = ({ onChange, onSubmit, submitting, value }) => (
     <>
@@ -80,7 +80,7 @@ const Comments = () => {
     return (
         <Container>
             <>
-                {comments.length > 0 && <CommentList comments={comments} />}
+                {/* {comments.length > 0 && <CommentList comments={comments} />} */}
                 <Comment
                     avatar={
                         <Avatar

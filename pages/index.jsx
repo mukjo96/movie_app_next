@@ -16,7 +16,6 @@ const Page = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    background-color: #f9f9f9;
     margin: 0 auto;
 
     @media screen and (min-width: 1280px) {

@@ -3,11 +3,9 @@ import styled from "styled-components";
 import { Rate } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { Divider, Typography, Row, Col, Tag } from "antd";
+import { RateType } from "@features/movies/types/moviesTypes";
 const { Paragraph, Link } = Typography;
 
-type RateType = {
-    rate: number;
-};
 const MainInfo = ({ movieInfo }) => {
     const rate: number = movieInfo.vote_average;
 
@@ -111,7 +109,7 @@ const MainInfo = ({ movieInfo }) => {
                                 )}
                             </DetailDesc>
                         </Col>
-                        <Col xs={{ span: 24 }} md={{ span: 16 }}>
+                        <Col xs={{ span: 24 }} md={{ span: 14, offset: 2 }}>
                             <DetailDesc>
                                 <Smalltitle>줄거리</Smalltitle>
                                 <Paragraph>{movieInfo.overview}</Paragraph>
@@ -236,7 +234,7 @@ const StyledRate = styled(Rate)`
 const Ratenum = styled.span<RateType>`
     margin-left: 2vw;
     background-color: ${(props) =>
-        props.rate > 8.0
+        props.rate >= 8.0
             ? "#48b80f"
             : props.rate > 6.5
             ? "#ffb300"
