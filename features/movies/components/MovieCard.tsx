@@ -137,6 +137,10 @@ const MovieInfoTitle = styled.span<TitleType>`
     font-weight: bold;
     margin: 0;
     line-height: 34px;
+
+    @media screen and (max-width: 768px) {
+        line-height: 20px;
+    }
 `;
 
 const MiddleLine = styled(Divider)`
@@ -178,13 +182,18 @@ const MovieInfoVote = styled.div<RateType>`
             : props.rate > 6.5
             ? "#ffb300"
             : "#ff2929"};
-    padding: 2px;
     margin: 2px;
     font-size: 14px;
     color: #f9f9f9;
     font-family: "Sansita Swashed";
     font-weight: bold;
     text-align: center;
+
+    @media screen and (max-width: 768px) {
+        width: 26px;
+        height: 26px;
+        font-size: 12px;
+    }
 `;
 
 const Vote = styled.div`
