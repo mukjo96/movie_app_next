@@ -206,10 +206,11 @@ const OriginalTitle = styled.h5`
     font-weight: 600;
     font-size: 24px;
     line-height: 1.5;
+    margin-left: 4px;
     margin-bottom: 0;
     font-family: "Sansita Swashed", cursive;
     @media screen and (max-width: 768px) {
-        font-size: 12px;
+        font-size: 16px;
     }
 `;
 
@@ -219,15 +220,16 @@ const Release = styled.h5`
     font-size: 16px;
     line-height: 1.5;
     margin-bottom: 0;
+    margin-left: 4px;
     font-family: "Sansita Swashed", cursive;
     @media screen and (max-width: 768px) {
-        font-size: 12px;
+        font-size: 14px;
     }
 `;
 
 const StyledRate = styled(Rate)`
     @media screen and (max-width: 768px) {
-        font-size: 12px;
+        font-size: 16px;
     }
 `;
 
@@ -245,7 +247,7 @@ const Ratenum = styled.span<RateType>`
     border-radius: 5px;
     padding: 5px;
     @media screen and (max-width: 768px) {
-        font-size: 12px;
+        font-size: 14px;
     }
 `;
 

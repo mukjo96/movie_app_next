@@ -63,8 +63,8 @@ export default BoxOfficeList;
 const Container = styled.div`
     display: flex;
     flex-direction: column;
-    width: 30%;
-    max-width: 30%;
+    width: 100%;
+    max-width: 100%;
 `;
 
 const Header = styled.h3`

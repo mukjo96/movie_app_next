@@ -33,6 +33,12 @@ const Title = styled.a`
     letter-spacing: 13px;
     text-decoration: none;
     text-align: center;
+
+    @media screen and (max-width: 768px) {
+        font-size: 38px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
 `;
 
 const Description = styled.p`
@@ -42,4 +48,10 @@ const Description = styled.p`
     margin: 2.5em 0 0;
     letter-spacing: 3px;
     text-align: center;
+
+    @media screen and (max-width: 768px) {
+        font-size: 12px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
 `;

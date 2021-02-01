@@ -5,6 +5,7 @@ import {
     getTodayBoxOffice,
     getLastWeekendBoxOffice,
 } from "@features/home/api/boxOffice.api";
+import { Col, Row } from "antd";
 
 const boxofficeTypeMapper = {
     today: {
@@ -41,15 +42,24 @@ const BoxOffice = () => {
             <Header>
                 <strong>박스 오피스</strong>를 확인하세요
             </Header>
+
             <ListWrapper>
-                {Object.keys(boxofficeTypeMapper).map((type) => (
-                    <BoxOfficeList
-                        key={type}
-                        title={boxofficeTypeMapper[type].title}
-                        datas={datas[type]}
-                        dataProps={boxofficeTypeMapper[type].dataProps}
-                    />
-                ))}
+                <Row justify="space-around">
+                    {Object.keys(boxofficeTypeMapper).map((type) => (
+                        <StyledCol
+                            key={type}
+                            xs={{ span: 20 }}
+                            md={{ span: 8 }}
+                        >
+                            <BoxOfficeList
+                                key={type}
+                                title={boxofficeTypeMapper[type].title}
+                                datas={datas[type]}
+                                dataProps={boxofficeTypeMapper[type].dataProps}
+                            />
+                        </StyledCol>
+                    ))}
+                </Row>
             </ListWrapper>
         </Container>
     );
@@ -68,8 +78,10 @@ const Container = styled.div`
 const ListWrapper = styled.div`
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
-    padding: 40px 0;
+`;
+
+const StyledCol = styled(Col)`
+    margin-bottom: 3rem;
 `;
 
 const Header = styled.h2`
@@ -81,5 +93,5 @@ const Header = styled.h2`
         font-weight: 600;
         color: #575757;
     }
-    margin-bottom: 1em;
+    margin-bottom: 2rem;
 `;

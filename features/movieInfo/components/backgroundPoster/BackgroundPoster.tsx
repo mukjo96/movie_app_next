@@ -35,16 +35,8 @@ const BackgroundPoster = ({ backdrop_path, movieId }: posterType) => {
                 {movieVideo ? (
                     <>
                         <Layer>
-                            <FontAwesomeIcon
+                            <StyledPlayIcon
                                 icon={faPlayCircle}
-                                style={{
-                                    width: "10vh",
-                                    textAlign: "center",
-                                    color: "#ffff",
-                                    filter: "drop-shadow(3px 6px #272634)",
-                                    opacity: "0.7",
-                                    cursor: "pointer",
-                                }}
                                 onClick={() => setVisible(true)}
                             />
                         </Layer>
@@ -84,6 +76,19 @@ const Container = styled.div`
     @media screen and (min-width: 1280px) {
         width: 1280px;
         height: 533px;
+    }
+`;
+
+const StyledPlayIcon = styled(FontAwesomeIcon)`
+    width: 100px;
+    text-align: center;
+    color: #ffff;
+    filter: drop-shadow(3px 6px #272634);
+    opacity: 0.7;
+    cursor: pointer;
+
+    @media screen and (max-width: 768px) {
+        width: 50px;
     }
 `;
 

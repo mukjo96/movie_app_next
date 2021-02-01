@@ -37,7 +37,7 @@ const Cast = () => {
             <Row>
                 <Col xs={{ span: 24 }} md={{ span: 10 }}>
                     <Collapse defaultActiveKey={["1"]} ghost>
-                        <Panel header="출연진" key="1">
+                        <StyledPanel header={`\b출연`} key="1">
                             {data.cast.map(
                                 (element: castType, index: number) => (
                                     <Actor key={index}>
@@ -62,12 +62,12 @@ const Cast = () => {
                                     </Actor>
                                 )
                             )}
-                        </Panel>
+                        </StyledPanel>
                     </Collapse>
                 </Col>
                 <Col xs={{ span: 24 }} md={{ span: 10, offset: 4 }}>
                     <Collapse defaultActiveKey={["1"]} ghost>
-                        <Panel header="제작진" key="1">
+                        <StyledPanel header={`\b제작`} key="1">
                             {data.crew.map(
                                 (element: crewType, index: number) => (
                                     <Actor key={index}>
@@ -90,7 +90,7 @@ const Cast = () => {
                                     </Actor>
                                 )
                             )}
-                        </Panel>
+                        </StyledPanel>
                     </Collapse>
                 </Col>
             </Row>
@@ -104,6 +104,8 @@ const Container = styled.div`
     width: 90%;
     margin: 0 auto;
 `;
+
+const StyledPanel = styled(Panel)``;
 
 const Actor = styled.div`
     display: flex;

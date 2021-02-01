@@ -14,7 +14,7 @@ const InfoDetail = ({ details }: detailsTypes) => {
     return (
         <Container>
             <MainInfo movieInfo={movieInfo} />
-            <Descriptions details={details} />
+            <Descriptions />
         </Container>
     );
 };

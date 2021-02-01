@@ -7,6 +7,7 @@ import styled from "styled-components";
 import { moviesType, RateType, TitleType } from "../types/moviesTypes";
 
 const MovieCard = ({ movies }: moviesType) => {
+    console.log(`https://image.tmdb.org/t/p/w500${movies.poster_path}`);
     return (
         <Container>
             <Link href={`/movie/${movies.id}`}>
@@ -71,10 +72,28 @@ const Moviecard = styled.div`
     display: flex;
     position: relative;
     margin: 20px 10px;
-    max-width: 100%;
     text-decoration: none;
+    width: 250px;
+    height: 375px;
+
     color: #eee;
+
+    @media screen and (max-width: 600px) {
+        width: 150px;
+        height: 225px;
+        margin: 10px 5px;
+    }
 `;
+
+const MoviePoster = styled.div``;
+
+const MovieImg = styled.img`
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px #d9d9d9, -5px -5px 10px #ffffff;
+`;
+
 const MovieInfo = styled.div`
     display: flex;
     flex-direction: column;
@@ -98,50 +117,21 @@ const MovieInfo = styled.div`
     }
 `;
 
-const MoviePoster = styled.div`
-    position: relative;
-    width: 250px;
-    height: 350px;
-
-    @media screen and (max-width: 600px) {
-        width: 125px;
-        height: 175px;
-    }
-`;
-
-const MovieImg = styled.img`
-    width: 250px;
-    height: 350px;
-    border-radius: 10px;
-    box-shadow: 5px 5px 10px #d9d9d9, -5px -5px 10px #ffffff;
-
-    @media screen and (max-width: 600px) {
-        width: 125px;
-        height: 175px;
-        border-radius: 10px;
-    }
-`;
-
 const MovieInfoTop = styled.div`
     display: flex;
     justify-content: space-between;
     text-align: left;
     font-weight: bolder;
     margin-top: -6px;
-
-    @media screen and (max-width: 600px) {
-        width: 125px;
-        font-size: 12px;
-    }
 `;
 
 const MovieInfoTitle = styled.span<TitleType>`
     color: #f9f9f9;
     font-size: 16px;
     font-size: ${(props) =>
-        props.title.length > 20
+        props.title.length > 19
             ? "11px"
-            : props.title.length > 16
+            : props.title.length > 14
             ? "14px"
             : "16px"};
     font-weight: bold;
@@ -199,6 +189,7 @@ const MovieInfoVote = styled.div<RateType>`
 
 const Vote = styled.div`
     display: block;
+    align-self: center;
 `;
 const Block = styled.div`
     height: 3px;

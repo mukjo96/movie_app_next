@@ -14,7 +14,7 @@ import { detailsTypes } from "@features/movieInfo/types/detailsTypes";
 
 const { TabPane } = Tabs;
 
-const Descriptions = ({ details }: detailsTypes) => {
+const Descriptions = () => {
     return (
         <Container>
             <StyledTabs defaultActiveKey="1" centered={true}>
