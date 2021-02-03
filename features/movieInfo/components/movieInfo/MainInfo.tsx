@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { Rate } from "antd";
-import { UserOutlined } from "@ant-design/icons";
+import { LikeFilled } from "@ant-design/icons";
 import { Divider, Typography, Row, Col, Tag } from "antd";
 import { RateType } from "@features/movies/types/moviesTypes";
+
 const { Paragraph, Link } = Typography;
 
 const MainInfo = ({ movieInfo }) => {
@@ -40,8 +41,15 @@ const MainInfo = ({ movieInfo }) => {
                                 value={Math.round(rate) / 2}
                             />
                             <Ratenum rate={rate}>
-                                {rate} (<UserOutlined />
-                                {movieInfo.vote_count})
+                                {rate.toFixed(1)} (
+                                <LikeFilled /> {"\b"}
+                                {movieInfo.vote_count
+                                    .toString()
+                                    .replace(
+                                        /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
+                                        ","
+                                    )}
+                                )
                             </Ratenum>
                         </span>
                     </Row>
@@ -206,7 +214,7 @@ const OriginalTitle = styled.h5`
     font-weight: 600;
     font-size: 24px;
     line-height: 1.5;
-    margin-left: 4px;
+    margin-left: 3px;
     margin-bottom: 0;
     font-family: "Sansita Swashed", cursive;
     @media screen and (max-width: 768px) {
@@ -240,7 +248,9 @@ const Ratenum = styled.span<RateType>`
             ? "#48b80f"
             : props.rate > 6.5
             ? "#ffb300"
-            : "#ff2929"};
+            : props.rate !== 0
+            ? "#ff2929"
+            : "#333333"};
     color: #f9f9f9;
     font-family: "Sansita Swashed";
     font-weight: bold;

@@ -71,6 +71,7 @@ const StyledTabs = styled(Tabs)`
     }
     .ant-tabs-tab {
         font-size: 16px;
+        margin: 0;
     }
 
     @media screen and (max-width: 768px) {

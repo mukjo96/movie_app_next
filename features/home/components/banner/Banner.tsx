@@ -7,7 +7,7 @@ import MovieBanner from "./MovieBanner";
 
 const Banner = () => {
     const { data, error } = useSWR(
-        `https://api.themoviedb.org/3/movie/top_rated?sort_by=vote_average.desc&api_key=cfaaa8c5177462f54ee54a30c746dca3&language=ko-KR&page=1&region=KR`
+        `https://api.themoviedb.org/3/movie/upcoming?sort_by=vote_average.desc&api_key=cfaaa8c5177462f54ee54a30c746dca3&language=ko-KR&page=1&region=KR`
     );
 
     console.log(data);

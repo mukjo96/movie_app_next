@@ -9,7 +9,6 @@ import MainInfo from "@features/movieInfo/components/movieInfo/MainInfo";
 
 const InfoDetail = ({ details }: detailsTypes) => {
     const movieInfo = details;
-    console.log("Info", movieInfo);
 
     return (
         <Container>

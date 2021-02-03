@@ -48,7 +48,7 @@ const BoxOffice = () => {
                     {Object.keys(boxofficeTypeMapper).map((type) => (
                         <StyledCol
                             key={type}
-                            xs={{ span: 20 }}
+                            sm={{ span: 20 }}
                             md={{ span: 8 }}
                         >
                             <BoxOfficeList

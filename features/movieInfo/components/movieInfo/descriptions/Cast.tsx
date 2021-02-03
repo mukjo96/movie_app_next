@@ -17,7 +17,6 @@ const Cast = () => {
         `https://api.themoviedb.org/3/movie/${id}/credits?api_key=cfaaa8c5177462f54ee54a30c746dca3&language=ko-KR`
     );
 
-    console.log(data);
     if (error) return <div>failed to load</div>;
     if (!data)
         return (

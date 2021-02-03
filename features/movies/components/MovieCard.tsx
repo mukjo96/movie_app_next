@@ -7,7 +7,6 @@ import styled from "styled-components";
 import { moviesType, RateType, TitleType } from "../types/moviesTypes";
 
 const MovieCard = ({ movies }: moviesType) => {
-    console.log(`https://image.tmdb.org/t/p/w500${movies.poster_path}`);
     return (
         <Container>
             <Link href={`/movie/${movies.id}`}>
@@ -36,7 +35,9 @@ const MovieCard = ({ movies }: moviesType) => {
                                             className="star"
                                             icon={faStar}
                                         /> */}
-                                        {movies.vote_average.toFixed(1)}
+                                        {movies.vote_average !== 0
+                                            ? movies.vote_average.toFixed(1)
+                                            : "-"}
                                     </MovieInfoVote>
                                     <Block></Block>
                                 </Vote>
@@ -181,7 +182,9 @@ const MovieInfoVote = styled.div<RateType>`
             ? "#48b80f"
             : props.rate > 6.5
             ? "#ffb300"
-            : "#ff2929"};
+            : props.rate !== 0
+            ? "#ff2929"
+            : "#333333"};
     margin: 2px;
     font-size: 14px;
     color: #f9f9f9;

@@ -78,10 +78,10 @@ const Header = styled.h3`
 `;
 
 const Table = styled.table`
-    background-color: #d6d6d6;
+    border-radius: 10px 10px 0 0;
+    background-color: #ffffff;
     width: 100%;
     table-layout: fixed;
-    border-radius: 10px;
     box-shadow: 10px 10px 20px #d4d4d4, -10px -10px 20px #ffffff;
     padding: 8px;
 `;
@@ -90,13 +90,20 @@ const TableHeader = styled.tr`
     font-size: 12px;
     white-space: nowrap;
     text-align: center;
+    background-color: #333333;
+    color: #f9f9f9;
+    text-align: center;
+
     th {
-        padding: 5px;
+        /* padding: 5px;
         padding-right: 10px;
-        padding-left: 10px;
+        padding-left: 10px; */
+        padding: 1vw 1vh;
+        text-align: center;
     }
     .rank {
         width: 10%;
+        border-radius: 10px 0 0 0;
     }
     .rankInten {
         width: 10%;
@@ -106,6 +113,7 @@ const TableHeader = styled.tr`
     }
     .audiAcc {
         width: 20%;
+        border-radius: 0 10px 0 0;
     }
 `;
 
@@ -113,12 +121,24 @@ const TableRow = styled.tr`
     font-size: 12px;
     text-align: center;
     white-space: nowrap;
+    color: #f9f9f9;
+    text-align: center;
+    border-bottom: 1px thin #d6d6d6;
+
+    :nth-of-type(even) {
+        background-color: #f9f9f9;
+    }
+
+    :last-of-type {
+        border-bottom: 2px solid #333333;
+    }
 `;
 
 const TableData = styled.td<TableDataProps>`
-    padding: 5px;
+    /* padding: 5px;
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: ellipsis; */
+    padding: 12px 15px;
     a {
         text-decoration: none;
         cursor: pointer;
@@ -132,7 +152,9 @@ const TableData = styled.td<TableDataProps>`
     color: ${(props) =>
         props.props == "rankInten"
             ? props.data < 0
-                ? "red"
-                : "green"
+                ? "#ff2929"
+                : props.data > 0
+                ? "#48b80f"
+                : "#333333"
             : "black"};
 `;
