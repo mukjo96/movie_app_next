@@ -5,12 +5,9 @@ import Loading from "@features/common/Loading";
 import DetailCard from "../components/DetailCard";
 import useSWR from "swr";
 
-const MovieInfo = () => {
-    const router = useRouter();
-    const { movieid } = router.query;
-
+const MovieInfo = ({ id }) => {
     const { data, error } = useSWR(
-        `https://api.themoviedb.org/3/movie/${movieid}?api_key=cfaaa8c5177462f54ee54a30c746dca3&language=ko-KR`
+        `https://api.themoviedb.org/3/movie/${id}?api_key=cfaaa8c5177462f54ee54a30c746dca3&language=ko-KR`
     );
 
     console.log("movieInfo", data);
