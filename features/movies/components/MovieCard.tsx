@@ -9,7 +9,7 @@ import { moviesType, RateType, TitleType } from "../types/moviesTypes";
 const MovieCard = ({ movies }: moviesType) => {
     return (
         <Container>
-            <Link href="/movie/[movieid]" as={`/movie/${movies.id}`}>
+            <Link href={`/movie/${movies.id}`} as={`/movie/${movies.id}`}>
                 {movies ? (
                     <Moviecard>
                         <MoviePoster>
