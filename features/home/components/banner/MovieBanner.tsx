@@ -43,7 +43,10 @@ const MovieBanner = ({ movies }) => {
                                 </MovieInfoVote>
                             </Info>
                             <ButtonContainer>
-                                <Link href={`/movie/${movie.id}`}>
+                                <Link
+                                    href="/movie/[movieid]"
+                                    as={`/movie/${movie.id}`}
+                                >
                                     <Button value="more" onClick={() => {}} />
                                 </Link>
                             </ButtonContainer>
