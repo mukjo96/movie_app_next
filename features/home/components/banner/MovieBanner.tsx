@@ -48,7 +48,9 @@ const MovieBanner = ({ movies }) => {
                                 <Button
                                     value="more"
                                     onClick={() => {
-                                        router.push(`/movie?id=${movies.id}`);
+                                        router.push(
+                                            `/movie?movieid=${movie.id}`
+                                        );
                                     }}
                                 />
                             </ButtonContainer>

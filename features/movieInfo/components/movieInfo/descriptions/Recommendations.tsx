@@ -8,7 +8,7 @@ import useSWR from "swr";
 
 const Recommendations = () => {
     const router = useRouter();
-    const { id } = router.query;
+    const { movieid } = router.query;
     /* const [actors, setActors] = useState();
     const [crews, setCrews] = useState();
     const [isLoading, setIsLoading] = useState(true); */
@@ -29,7 +29,7 @@ const Recommendations = () => {
     }, [id]); */
 
     const { data, error } = useSWR(
-        `https://api.themoviedb.org/3/movie/${id}/recommendations?page=1&api_key=cfaaa8c5177462f54ee54a30c746dca3&language=ko-KR`
+        `https://api.themoviedb.org/3/movie/${movieid}/recommendations?page=1&api_key=cfaaa8c5177462f54ee54a30c746dca3&language=ko-KR`
     );
 
     console.log(data);
