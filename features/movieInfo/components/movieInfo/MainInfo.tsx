@@ -43,13 +43,7 @@ const MainInfo = ({ movieInfo }) => {
                             <Ratenum rate={rate}>
                                 {rate.toFixed(1)} (
                                 <LikeFilled /> {"\b"}
-                                {movieInfo.vote_count
-                                    .toString()
-                                    .replace(
-                                        /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
-                                        ","
-                                    )}
-                                )
+                                {movieInfo.vote_count.toString()})
                             </Ratenum>
                         </span>
                     </Row>
