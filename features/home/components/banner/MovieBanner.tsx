@@ -39,12 +39,9 @@ const MovieBanner = ({ movies }) => {
                                 </MovieInfoVote>
                             </Info>
                             <ButtonContainer>
-                                <Button
-                                    value="more"
-                                    onClick={() =>
-                                        (window.location.href = `/movie/${movie.id}`)
-                                    }
-                                />
+                                <Link href={`/movie/${movie.id}`}>
+                                    <Button value="more" onClick={() => {}} />
+                                </Link>
                             </ButtonContainer>
                         </Description>
                     </BackFilter>
