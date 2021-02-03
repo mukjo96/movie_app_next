@@ -8,8 +8,10 @@ import {
 } from "@features/movies/types/moviesTypes";
 import Link from "next/link";
 import Button from "@features/common/button/Button";
+import { Router, useRouter } from "next/router";
 
 const MovieBanner = ({ movies }) => {
+    const router = useRouter();
     console.log(movies);
     return (
         <Container>
@@ -43,12 +45,12 @@ const MovieBanner = ({ movies }) => {
                                 </MovieInfoVote>
                             </Info>
                             <ButtonContainer>
-                                <Link
-                                    href="/movie/[movieid]"
-                                    as={`/movie/${movie.id}`}
-                                >
-                                    <Button value="more" onClick={() => {}} />
-                                </Link>
+                                <Button
+                                    value="more"
+                                    onClick={() => {
+                                        router.push(`/movie/${movie.id}`);
+                                    }}
+                                />
                             </ButtonContainer>
                         </Description>
                     </BackFilter>
