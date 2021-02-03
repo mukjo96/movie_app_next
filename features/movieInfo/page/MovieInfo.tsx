@@ -7,10 +7,10 @@ import useSWR from "swr";
 
 const MovieInfo = () => {
     const router = useRouter();
-    const id = router.query.movieId;
+    const { movieId } = router.query;
 
     const { data, error } = useSWR(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=cfaaa8c5177462f54ee54a30c746dca3&language=ko-KR`
+        `https://api.themoviedb.org/3/movie/${movieId}?api_key=cfaaa8c5177462f54ee54a30c746dca3&language=ko-KR`
     );
 
     console.log(data);

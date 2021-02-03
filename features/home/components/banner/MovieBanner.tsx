@@ -1,7 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { Carousel } from "antd";
-import { movieType, RateType } from "@features/movies/types/moviesTypes";
+import {
+    movieType,
+    RateType,
+    TitleType,
+} from "@features/movies/types/moviesTypes";
 import Link from "next/link";
 import Button from "@features/common/button/Button";
 
@@ -19,7 +23,7 @@ const MovieBanner = ({ movies }) => {
                         ></Movies>
                         <Description>
                             <Info>
-                                <Title>
+                                <Title title={movie.title}>
                                     {/* {movie.title.replace(/\s+/g, "\n")} */}
                                     {movie.title}
                                 </Title>
@@ -121,7 +125,7 @@ const MovieInfoVote = styled.div<RateType>`
     }
 `;
 
-const Title = styled.span`
+const Title = styled.span<TitleType>`
     color: #575757;
     /* background-color: rgba(0, 0, 0, 0);
     color: rgba(0, 0, 0, 0);
@@ -129,7 +133,12 @@ const Title = styled.span`
     font-family: "Noto Sans KR", serif;
     margin: 0 12px;
     text-align: right;
-    font-size: 28px;
+    font-size: ${(props) =>
+        props.title.length > 19
+            ? "18px"
+            : props.title.length > 14
+            ? "24px"
+            : "28px"};
     font-weight: bold;
     white-space: pre;
     /* text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9,
@@ -139,7 +148,12 @@ const Title = styled.span`
         0 20px 20px rgba(0, 0, 0, 0.15); */
 
     @media screen and (max-width: 768px) {
-        font-size: 20px;
+        font-size: ${(props) =>
+            props.title.length > 19
+                ? "14px"
+                : props.title.length > 14
+                ? "16px"
+                : "20px"};
         margin: 0 8px;
     }
 `;
