@@ -32,27 +32,33 @@ const BoxOfficeList = ({ title, dataProps, datas }) => {
         <Container>
             <Header>{title}</Header>
             <Table>
-                <TableHeader>
-                    {dataProps.map((props, index) => (
-                        <th key={index} className={props}>
-                            {dataPropsMapper[props].title}
-                        </th>
-                    ))}
-                </TableHeader>
-                {datas.map((data) => (
-                    <TableRow>
-                        {dataProps.map((props, index) => (
-                            <TableData
-                                key={index}
-                                className={props}
-                                data={data[props]}
-                                props={props}
-                            >
-                                {dataPropsMapper[props].parseData(data[props])}
-                            </TableData>
+                <thead>
+                    <TableHeader>
+                        {dataProps.map((props: string, index: number) => (
+                            <th key={index} className={props}>
+                                {dataPropsMapper[props].title}
+                            </th>
                         ))}
-                    </TableRow>
-                ))}
+                    </TableHeader>
+                </thead>
+                <tbody>
+                    {datas.map((data: number | string, index: number) => (
+                        <TableRow key={index}>
+                            {dataProps.map((props: string, index: number) => (
+                                <TableData
+                                    key={index}
+                                    className={props}
+                                    data={data[props]}
+                                    props={props}
+                                >
+                                    {dataPropsMapper[props].parseData(
+                                        data[props]
+                                    )}
+                                </TableData>
+                            ))}
+                        </TableRow>
+                    ))}
+                </tbody>
             </Table>
         </Container>
     );
@@ -98,7 +104,7 @@ const TableHeader = styled.tr`
         /* padding: 5px;
         padding-right: 10px;
         padding-left: 10px; */
-        padding: 1vw 1vh;
+        padding: 1vh 1vw;
         text-align: center;
     }
     .rank {
@@ -114,6 +120,12 @@ const TableHeader = styled.tr`
     .audiAcc {
         width: 20%;
         border-radius: 0 10px 0 0;
+    }
+
+    @media screen and (min-width: 1280px) {
+        th {
+            padding: 1vh 12px;
+        }
     }
 `;
 

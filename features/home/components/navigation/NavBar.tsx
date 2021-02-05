@@ -65,7 +65,7 @@ const Hamburger = styled.div`
             flex-direction: column;
             align-items: center;
             width: 100%;
-            box-shadow: 0 2px rgba(0, 0, 0, 0.12), 0 1px rgba(0, 0, 0, 0.24);
+            border-bottom: 1px solid #d6d6d6;
             li {
                 width: 100%;
                 text-align: center;

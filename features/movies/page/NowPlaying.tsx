@@ -23,7 +23,6 @@ const NowPlaying = () => {
         }
         fetchMovies();
         setIsLoading(false);
-        console.log(nowpage, totalPage);
     }, [nowpage]);
 
     const onChange = (pageNumber: number) => {
@@ -32,18 +31,6 @@ const NowPlaying = () => {
 
     return (
         <Fragment>
-            <Pagination
-                showQuickJumper
-                style={{
-                    textAlign: "center",
-                    marginTop: "20px",
-                }}
-                showSizeChanger={false}
-                current={nowpage}
-                defaultPageSize={20}
-                total={totalPage}
-                onChange={onChange}
-            />
             {isLoading ? (
                 <Loading />
             ) : (
@@ -53,6 +40,14 @@ const NowPlaying = () => {
                     ))}
                 </Movies>
             )}
+            <StyledPagination
+                showQuickJumper
+                showSizeChanger={false}
+                current={nowpage}
+                defaultPageSize={20}
+                total={totalPage}
+                onChange={onChange}
+            />
         </Fragment>
     );
 };
@@ -77,4 +72,9 @@ const Movies = styled.div`
         max-width: 100%;
         margin-top: 4%;
     }
+`;
+
+const StyledPagination = styled(Pagination)`
+    text-align: center;
+    margin: 20px 0;
 `;

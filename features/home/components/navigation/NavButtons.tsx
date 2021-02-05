@@ -8,7 +8,9 @@ const NavButtons = () => {
     return (
         <Container>
             <LogoutButton />
-            <ProfileButton />
+            <Link href="/login">
+                <ProfileButton />
+            </Link>
         </Container>
     );
 };

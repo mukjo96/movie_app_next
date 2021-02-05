@@ -59,10 +59,14 @@ const MainInfo = ({ movieInfo }) => {
                                         <StyledTag
                                             key={index}
                                             color={
-                                                index % 3 === 0
+                                                genre.id % 5 === 0
                                                     ? "geekblue"
-                                                    : index % 3 === 1
+                                                    : genre.id % 5 === 1
                                                     ? "magenta"
+                                                    : genre.id % 5 === 2
+                                                    ? "green"
+                                                    : genre.id % 5 === 3
+                                                    ? "volcano"
                                                     : "orange"
                                             }
                                         >
@@ -83,13 +87,14 @@ const MainInfo = ({ movieInfo }) => {
                                     ) => (
                                         <StyledTag
                                             key={index}
-                                            color={
+                                            /* color={
                                                 index % 3 === 0
-                                                    ? "red"
+                                                    ? "#48b80f"
                                                     : index % 3 === 1
-                                                    ? "green"
-                                                    : "purple"
-                                            }
+                                                    ? "#ffb300"
+                                                    : "#ff2929"
+                                            } */
+                                            color="#333333"
                                         >
                                             {nationtoKR(country.name)}
                                         </StyledTag>
@@ -114,7 +119,15 @@ const MainInfo = ({ movieInfo }) => {
                         <Col xs={{ span: 24 }} md={{ span: 14, offset: 2 }}>
                             <DetailDesc>
                                 <Smalltitle>줄거리</Smalltitle>
-                                <Paragraph>{movieInfo.overview}</Paragraph>
+                                <Paragraph
+                                    ellipsis={{
+                                        rows: 4,
+                                        expandable: true,
+                                        symbol: "more",
+                                    }}
+                                >
+                                    {movieInfo.overview}
+                                </Paragraph>
                             </DetailDesc>
                             <DetailDesc>
                                 <Smalltitle>제작사</Smalltitle>
@@ -292,6 +305,14 @@ const Companies = styled.div`
         }
     }
 
+    @media screen and (min-width: 1280px) {
+        li {
+            img {
+                max-width: 128px;
+            }
+        }
+    }
+
     @media screen and (max-width: 768px) {
         li {
             img {
@@ -326,6 +347,8 @@ function nationtoKR(s: string) {
     else if (s === "Croatia") return "크로아티아";
     else if (s === "Serbia") return "세르비아";
     else if (s === "Thailand") return "태국";
+    else if (s === "Argentina") return "아르헨티나";
+    else if (s === "Hong Kong") return "홍콩";
     else return s;
 }
 

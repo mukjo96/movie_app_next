@@ -4,6 +4,7 @@ import "../styles/globals.css";
 import moment from "moment";
 import NavBar from "@features/home/components/navigation/NavBar";
 import { AuthProvider } from "../firebase/auth";
+import Foot from "@features/common/Footer/Foot";
 
 function MyApp({ Component, pageProps }) {
     moment.locale("ko");
@@ -15,6 +16,7 @@ function MyApp({ Component, pageProps }) {
             </Head>
             <NavBar />
             <Component {...pageProps} />
+            <Foot />
         </AuthProvider>
     );
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import { Input } from "antd";
 import { useRouter } from "next/router";
+import styled from "styled-components";
 
 const { Search } = Input;
 
@@ -12,12 +13,7 @@ const Searchbar = () => {
     };
 
     return (
-        <Search
-            style={{
-                width: "240px",
-                padding: "3px 0 3px 0",
-                marginLeft: "5px",
-            }}
+        <StyledSearchbar
             placeholder="Search Movie"
             onSearch={onSearch}
             enterButton
@@ -27,3 +23,16 @@ const Searchbar = () => {
 };
 
 export default Searchbar;
+
+const StyledSearchbar = styled(Search)`
+    width: 240px;
+    padding: 3px 0 3px 0;
+    margin-left: 5px;
+
+    .ant-input-group-addon {
+        button {
+            background-color: #333333;
+            border-color: #333333;
+        }
+    }
+`;

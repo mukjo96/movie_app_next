@@ -31,18 +31,6 @@ const UpComing = () => {
 
     return (
         <Fragment>
-            <Pagination
-                showQuickJumper
-                style={{
-                    textAlign: "center",
-                    marginTop: "20px",
-                }}
-                showSizeChanger={false}
-                defaultPageSize={20}
-                current={nowpage}
-                total={totalPage}
-                onChange={onChange}
-            />
             {isLoading ? (
                 <Loading />
             ) : (
@@ -52,6 +40,14 @@ const UpComing = () => {
                     ))}
                 </Movies>
             )}
+            <StyledPagination
+                showQuickJumper
+                showSizeChanger={false}
+                defaultPageSize={20}
+                current={nowpage}
+                total={totalPage}
+                onChange={onChange}
+            />
         </Fragment>
     );
 };
@@ -75,4 +71,8 @@ const Movies = styled.div`
         grid-template-columns: repeat(2, minmax(auto, 150px));
         width: 90%;
     }
+`;
+const StyledPagination = styled(Pagination)`
+    text-align: center;
+    margin: 20px 0;
 `;

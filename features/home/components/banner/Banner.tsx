@@ -10,7 +10,6 @@ const Banner = () => {
         `https://api.themoviedb.org/3/movie/now_playing?sort_by=vote_average.desc&api_key=cfaaa8c5177462f54ee54a30c746dca3&language=ko-KR&page=1&region=KR`
     );
 
-    console.log(data);
     if (error) return <div>failed to load</div>;
     if (!data)
         return (

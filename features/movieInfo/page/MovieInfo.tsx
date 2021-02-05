@@ -13,7 +13,6 @@ const MovieInfo = () => {
         `https://api.themoviedb.org/3/movie/${movieid}?api_key=cfaaa8c5177462f54ee54a30c746dca3&language=ko-KR`
     );
 
-    console.log("movieInfo", data);
     if (!movieid) return <div>no ID!</div>;
     if (error) return <div>failed to load</div>;
     if (!data)

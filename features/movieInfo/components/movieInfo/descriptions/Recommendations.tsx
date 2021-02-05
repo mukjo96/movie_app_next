@@ -32,7 +32,6 @@ const Recommendations = () => {
         `https://api.themoviedb.org/3/movie/${movieid}/recommendations?page=1&api_key=cfaaa8c5177462f54ee54a30c746dca3&language=ko-KR`
     );
 
-    console.log(data);
     if (error) return <div>failed to load</div>;
     if (!data)
         return (

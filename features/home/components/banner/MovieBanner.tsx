@@ -12,12 +12,11 @@ import { Router, useRouter } from "next/router";
 
 const MovieBanner = ({ movies }) => {
     const router = useRouter();
-    console.log(movies);
     return (
         <Container>
             <Carousel autoplay autoplaySpeed={3000} dotPosition="top">
                 {movies.slice(0, 6).map((movie: movieType, index: number) => (
-                    <BackFilter>
+                    <BackFilter key={index}>
                         <Movies
                             style={{
                                 backgroundImage: `url(https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${movie.backdrop_path})`,
@@ -164,7 +163,7 @@ const Title = styled.span<TitleType>`
 `;
 
 const ButtonContainer = styled.div`
-    width: 240px;
+    width: 180px;
     padding-right: 12px;
     cursor: pointer;
     button {
@@ -176,13 +175,14 @@ const ButtonContainer = styled.div`
     }
 
     @media screen and (max-width: 768px) {
-        width: 120px;
+        width: 100px;
         padding-right: 8px;
 
         button {
+            height: 30px;
             font-size: 14px;
-            padding: 8px;
-            padding-bottom: 11px;
+            padding: 0px;
+            padding-bottom: 2px;
         }
     }
 `;

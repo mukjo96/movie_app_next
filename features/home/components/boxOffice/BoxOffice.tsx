@@ -48,8 +48,8 @@ const BoxOffice = () => {
                     {Object.keys(boxofficeTypeMapper).map((type) => (
                         <StyledCol
                             key={type}
-                            sm={{ span: 20 }}
-                            md={{ span: 8 }}
+                            sm={{ span: 24 }}
+                            md={{ span: 10 }}
                         >
                             <BoxOfficeList
                                 key={type}
@@ -82,6 +82,11 @@ const ListWrapper = styled.div`
 
 const StyledCol = styled(Col)`
     margin-bottom: 3rem;
+
+    @media screen and (max-width: 768px) {
+        margin-right: 1vw;
+        margin-left: 1vw;
+    }
 `;
 
 const Header = styled.h2`
