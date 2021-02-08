@@ -11,7 +11,7 @@ const TheaterInfo = () => {
 
     const { data, error } = useSWR(
         `https://movieapp-737a9.firebaseio.com/Cinema/${
-            parseInt(theaterid.toString()) - 1
+            parseInt(theaterid) - 1
         }.json`
     );
 
