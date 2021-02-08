@@ -74,7 +74,7 @@ const Container = styled.div`
 `;
 
 const Header = styled.h3`
-    font-size: 1em;
+    font-size: 16px;
     letter-spacing: 2px;
     margin: 0 0 1.25em;
     font-weight: 600;
@@ -115,10 +115,10 @@ const TableHeader = styled.tr`
         width: 10%;
     }
     .movieNm {
-        width: 60%;
+        width: 55%;
     }
     .audiAcc {
-        width: 20%;
+        width: 25%;
         border-radius: 0 10px 0 0;
     }
 

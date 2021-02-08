@@ -32,13 +32,8 @@ const Container = styled.div`
 `;
 
 const GradientBlock = styled.div`
-    height: 2vh;
-    margin-top: -1vh;
-    margin-bottom: -1vh;
-    backdrop-filter: blur(3px);
-    background: linear-gradient(
-        0deg,
-        rgba(255, 255, 255, 1),
-        rgba(255, 255, 255, 0)
-    );
+    height: 3vh;
+    margin-top: -2vh;
+
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
 `;

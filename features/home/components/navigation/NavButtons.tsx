@@ -2,15 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import LogoutButton from "@features/common/button/LogoutButton";
 import ProfileButton from "@features/common/button/ProfileButton";
-import Link from "next/link";
 
 const NavButtons = () => {
     return (
         <Container>
             <LogoutButton />
-            <Link href="/login">
-                <ProfileButton />
-            </Link>
+
+            <ProfileButton />
         </Container>
     );
 };

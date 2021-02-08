@@ -7,7 +7,7 @@ const NavLinks = (open) => {
         { title: "Now Playing", route: "nowplaying" },
         { title: "Up Coming", route: "upcoming" },
         { title: "Top Rated", route: "toprated" },
-        { title: "Theaters", route: "theaters" },
+        { title: "Theaters", route: "theater" },
     ];
 
     return (

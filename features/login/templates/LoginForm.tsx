@@ -4,31 +4,33 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import { firebaseClient } from "../../../firebase/firebaseClient";
+import { useRouter } from "next/router";
 
 const LoginForm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const router = useRouter();
 
     const onLogin = async () => {
         try {
             await firebaseClient
                 .auth()
                 .signInWithEmailAndPassword(email, password);
-            window.location.href = "/";
+            router.push("/");
         } catch (error) {
             alert(error.message);
         }
     };
 
     const onGoogleLogin = async () => {
-        let provider = new firebaseClient.auth.GoogleAuthProvider();
+        const provider = new firebaseClient.auth.GoogleAuthProvider();
         await firebaseClient.auth().signInWithPopup(provider);
-        window.location.href = "/";
+        router.push("/");
     };
     const onGithubLogin = async () => {
-        let provider = new firebaseClient.auth.GithubAuthProvider();
+        const provider = new firebaseClient.auth.GithubAuthProvider();
         await firebaseClient.auth().signInWithPopup(provider);
-        window.location.href = "/";
+        router.push("/");
     };
 
     return (

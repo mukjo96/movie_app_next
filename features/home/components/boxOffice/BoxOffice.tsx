@@ -49,7 +49,7 @@ const BoxOffice = () => {
                         <StyledCol
                             key={type}
                             sm={{ span: 24 }}
-                            md={{ span: 10 }}
+                            md={{ span: 9 }}
                         >
                             <BoxOfficeList
                                 key={type}

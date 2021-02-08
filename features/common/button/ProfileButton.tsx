@@ -1,15 +1,18 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 const ProfileButton = () => {
     return (
-        <FontAwesomeIcon
-            icon={faUser}
-            color={"#333333"}
-            height="16px"
-            style={{ cursor: "pointer" }}
-        />
+        <Link href="/login">
+            <FontAwesomeIcon
+                icon={faUser}
+                color={"#333333"}
+                height="16px"
+                style={{ cursor: "pointer" }}
+            />
+        </Link>
     );
 };
 
