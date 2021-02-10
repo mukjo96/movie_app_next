@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import TheaterCard from "./TheaterCard";
+import TheaterCard from "@features/theaters/components/theaterHome/TheaterCard";
 
 const TheaterList = ({ theaters, activeTheater, activeLocation }) => {
     const selectedTheater =

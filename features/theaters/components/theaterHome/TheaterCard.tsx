@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Card } from "antd";
+import { Card, Col, Row } from "antd";
 import { RateType } from "@features/movies/types/moviesTypes";
 import Link from "next/link";
-import { RightOutlined } from "@ant-design/icons";
+import {
+    RightOutlined,
+    EnvironmentTwoTone,
+    ShopTwoTone,
+} from "@ant-design/icons";
+import GDistance from "@features/kakaoMap/getDistance";
 
 const TheaterCard = ({ theater }) => {
     const exampleRate = 8.5;
+
     return (
         <Container>
             <StyledCard
@@ -21,14 +27,38 @@ const TheaterCard = ({ theater }) => {
                     </Link>
                 }
             >
-                {theater.road_address_name}
+                <Col>
+                    <Row>
+                        <ShopTwoTone
+                            style={{
+                                alignSelf: "center",
+                                marginRight: "4px",
+                                fontSize: "16px",
+                            }}
+                            twoToneColor="#333333"
+                        />
+                        {theater.road_address_name}
+                    </Row>
+                    <Row>
+                        <EnvironmentTwoTone
+                            style={{
+                                alignSelf: "center",
+                                marginRight: "4px",
+                                fontSize: "16px",
+                            }}
+                            twoToneColor="#333333"
+                        />
+                        <GDistance x={theater.x} y={theater.y} />
+                    </Row>
+                </Col>
                 <MovieInfoVote rate={exampleRate}>
                     {/* {movies.vote_average !== 0
-                                            ? movies.vote_average.toFixed(1)
-                                            : "-"} */}
+                                        ? movies.vote_average.toFixed(1)
+                                        : "-"} */}
                     {exampleRate}
                 </MovieInfoVote>
             </StyledCard>
+
             {/* <CardContainer>
                 <CardTop>
                     <TheaterTitle>{theater.THEATER_NAME}</TheaterTitle>

@@ -102,10 +102,12 @@ const MovieInfo = styled.div`
     bottom: 0;
     padding: 12px 16px;
     align-self: end;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
+    background: rgba(74, 74, 74, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     border-radius: 10px;
-    box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     /*margin: 8px;*/
     visibility: hidden;
     transition: visibility 500ms;
@@ -128,6 +130,7 @@ const MovieInfoTop = styled.div`
 
 const MovieInfoTitle = styled.span<TitleType>`
     color: #f9f9f9;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     font-size: 16px;
     font-size: ${(props) =>
         props.title.length > 19
@@ -168,6 +171,7 @@ const MovieInfoDetails = styled.div`
     text-align: left;
     line-height: 18px;
     margin-right: 5px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 `;
 
 const MovieInfoVote = styled.div<RateType>`
@@ -188,6 +192,7 @@ const MovieInfoVote = styled.div<RateType>`
     margin: 2px;
     font-size: 14px;
     color: #f9f9f9;
+
     font-family: "Sansita Swashed";
     font-weight: bold;
     text-align: center;

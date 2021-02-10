@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Loading from "@features/common/Loading";
 
 import useSWR from "swr";
+import TheaterDetail from "@features/theaters/components/theaterDetail/theaterDetail";
 
 const TheaterInfo = () => {
     const router = useRouter();
@@ -32,7 +33,9 @@ const TheaterInfo = () => {
 
     return (
         <Fragment>
-            <Details>{data.THEATER_NAME}</Details>
+            <Details>
+                <TheaterDetail theater={data} />
+            </Details>
         </Fragment>
     );
 };

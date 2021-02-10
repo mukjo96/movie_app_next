@@ -13,6 +13,10 @@ function MyApp({ Component, pageProps }) {
             <Head>
                 <title>Movie App</title>
                 <link rel="shortcut icon" href="/image/favicon.ico" />
+                <script
+                    type="text/javascript"
+                    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=77cf3cff30a0d0cc392bf1f29fdf58ad&libraries=services"
+                ></script>
             </Head>
             <NavBar />
             <Component {...pageProps} />

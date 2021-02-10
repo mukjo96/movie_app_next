@@ -93,17 +93,16 @@ function CardCarousel({ activeSlide, setActiveSlide }) {
                 }}
                 itemsToShow={3}
                 speed={400}
+                easing="ease-in-out"
             >
                 {Array.from({ length: 5 }).map((item, index) => (
                     <TheaterCard
                         style={{
                             justifyContent: "center",
-                            background: "white",
 
                             marginLeft: "5px",
                             marginRight: "5px",
-                            paddingTop: 5,
-                            paddingBottom: 5,
+
                             textAlign: "center",
                             boxSizing: "border-box",
                             display: "flex",
@@ -175,6 +174,7 @@ const TheaterCard = styled.div`
     */
     width: 250px;
     height: 250px;
+
     filter: blur(5px);
     @media screen and (max-width: 768px) {
         width: 150px;
@@ -190,6 +190,7 @@ const CardContainer = styled.div`
     flex-direction: column;
     align-items: center;
     border-radius: 10px;
+    background: rgba(255, 255, 255, 0.25);
 `;
 
 const TheaterName = styled.span`

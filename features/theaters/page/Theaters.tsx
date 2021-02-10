@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import useSWR from "swr";
-import CardCarousel from "@features/theaters/components/CardCarousel";
-import LocationRadio from "@features/theaters/components/LocationRadio";
-import TheaterList from "@features/theaters/components/TheaterList";
+
 import Loading from "@features/common/Loading";
+import CardCarousel from "@features/theaters/components/theaterHome/CardCarousel";
+import LocationRadio from "@features/theaters/components/theaterHome/LocationRadio";
+import TheaterList from "@features/theaters/components/theaterHome/TheaterList";
 
 const Theaters = () => {
     const [activeTheater, setActiveTheater] = useState(4);
