@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import KakaomapComponent from "@features/kakaoMap/KakaoMapComponent";
+import KakaomapComponent from "@features/kakaoMap/KakaomapComponent";
 
 const Map = ({ locX, locY }) => {
     const kakaoMap = React.useRef<HTMLDivElement>(null);
