@@ -6,38 +6,14 @@ import {
     VideoCameraOutlined,
     CommentOutlined,
 } from "@ant-design/icons";
-import Cast from "./descriptions/Cast";
-import Recommendations from "./descriptions/Recommendations";
-import Comments from "./descriptions/Comments";
+import TheaterComments from "./theaterComments";
 
 const { TabPane } = Tabs;
 
-const Descriptions = () => {
+const TheaterDescriptions = () => {
     return (
         <Container>
             <StyledTabs defaultActiveKey="1" centered={true}>
-                <TabPane
-                    tab={
-                        <span>
-                            <AuditOutlined />
-                            <span className="tabTitle">출연/제작</span>
-                        </span>
-                    }
-                    key="1"
-                >
-                    <Cast />
-                </TabPane>
-                <TabPane
-                    tab={
-                        <span>
-                            <VideoCameraOutlined />
-                            <span className="tabTitle">추천 영화</span>
-                        </span>
-                    }
-                    key="2"
-                >
-                    <Recommendations />
-                </TabPane>
                 <TabPane
                     tab={
                         <span>
@@ -45,16 +21,16 @@ const Descriptions = () => {
                             <span className="tabTitle">댓글</span>
                         </span>
                     }
-                    key="3"
+                    key="1"
                 >
-                    <Comments />
+                    <TheaterComments />
                 </TabPane>
             </StyledTabs>
         </Container>
     );
 };
 
-export default Descriptions;
+export default TheaterDescriptions;
 
 const Container = styled.div`
     border-radius: 0 0 15px 15px;

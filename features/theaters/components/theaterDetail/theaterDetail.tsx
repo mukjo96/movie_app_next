@@ -1,14 +1,18 @@
 import Loading from "@features/common/Loading";
 import React, { Fragment } from "react";
 import styled from "styled-components";
-import TheaterInfoDetail from "./theaterInfoDetail";
+
+import TheaterDescriptions from "./theaterDescriptions";
+
 import TheaterLocation from "./theaterLocation";
+import TheaterMainInfo from "./theaterMainInfo";
 
 const TheaterDetail = ({ theater }) => {
     return (
         <Container>
             <TheaterLocation theater={theater} />
-            <TheaterInfoDetail theater={theater} />
+            <TheaterMainInfo theater={theater} />
+            <TheaterDescriptions />
         </Container>
     );
 };
@@ -16,7 +20,7 @@ const TheaterDetail = ({ theater }) => {
 export default TheaterDetail;
 
 const Container = styled.div`
-    background-color: #f9f9f9;
+    background-color: #fff;
     height: 100%;
     margin: 0 auto;
     /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.16), 0 4px 8px rgba(0, 0, 0, 0.23); */

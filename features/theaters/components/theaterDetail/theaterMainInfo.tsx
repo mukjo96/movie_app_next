@@ -62,6 +62,7 @@ const TheaterMainInfo = ({ theater }) => {
                         <Col xs={{ span: 24 }} md={{ span: 8 }}>
                             <DetailDesc>
                                 <Tagsmalltitle>주소</Tagsmalltitle>
+
                                 {theater.road_address_name}
                             </DetailDesc>
                             <DetailDesc>
@@ -85,13 +86,15 @@ const TheaterMainInfo = ({ theater }) => {
                         </Col>
                         <Col xs={{ span: 24 }} md={{ span: 14, offset: 2 }}>
                             <DetailDesc>
-                                <Smalltitle>영화관까지의 거리</Smalltitle>
+                                <Smalltitle style={{ marginBottom: 0 }}>
+                                    영화관까지의 거리
+                                </Smalltitle>
                                 <Companies>
                                     <EnvironmentTwoTone
                                         style={{
                                             alignSelf: "center",
                                             marginRight: "4px",
-                                            fontSize: "16px",
+                                            fontSize: "14px",
                                         }}
                                         twoToneColor="#333333"
                                     />
@@ -140,6 +143,7 @@ const Container = styled.div`
     width: 100%;
     height: 100%;
     padding: 2vh 2vw;
+
     /*     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.16), 0 4px 8px rgba(0, 0, 0, 0.23);
  */
     @media screen and (max-width: 768px) {
