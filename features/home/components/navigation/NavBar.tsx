@@ -57,6 +57,8 @@ const Hamburger = styled.div`
         flex-grow: 1;
         display: flex;
         align-items: center;
+        justify-content: space-between;
+        margin-left: 5%;
     }
 
     @media screen and (max-width: 768px) {

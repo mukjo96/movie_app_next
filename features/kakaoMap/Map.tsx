@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import KakaomapComponent from "@features/kakaoMap/KakaomapComponent";
+import { LayoutContext } from "antd/lib/layout/layout";
 
 const Map = ({ locX, locY }) => {
     const kakaoMap = React.useRef<HTMLDivElement>(null);
@@ -21,6 +22,33 @@ const Map = ({ locX, locY }) => {
                 position: coords,
                 map,
             });
+            if (navigator.geolocation) {
+                // GeoLocation을 이용해서 접속 위치를 얻어옵니다.
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    const lat = position.coords.latitude, // 위도
+                        lon = position.coords.longitude; // 경도
+                    const currentCoords = new (window as any).daum.maps.LatLng(
+                        lat,
+                        lon
+                    );
+                    const markerSize = new (window as any).daum.maps.Size(
+                        16,
+                        16
+                    );
+                    const markerImage = new (window as any).daum.maps.MarkerImage(
+                        "https://ssl.pstatic.net/static/maps/m/pin_rd.png",
+                        markerSize
+                    );
+                    const currentMarker = new (window as any).daum.maps.Marker({
+                        position: currentCoords,
+                        map,
+                        image: markerImage,
+                    });
+                    currentMarker.setPosition(currentCoords);
+                });
+            } else {
+            }
+
             // 맵의 중앙으로 이동
             map.relayout();
             map.setCenter(coords);

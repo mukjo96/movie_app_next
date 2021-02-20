@@ -12,7 +12,7 @@ const DetailCard = ({ details }: detailsTypes) => {
                 backdrop_path={details.backdrop_path}
                 movieId={details.id}
             />
-            <GradientBlock></GradientBlock>
+
             <InfoDetail details={details} />
         </Container>
     );
@@ -29,11 +29,4 @@ const Container = styled.div`
     @media screen and (min-width: 1280px) {
         width: 1280px;
     }
-`;
-
-const GradientBlock = styled.div`
-    height: 3vh;
-    margin-top: -2vh;
-
-    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
 `;

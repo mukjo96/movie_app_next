@@ -21,15 +21,15 @@ const MovieBanner = ({ movies }) => {
                             style={{
                                 backgroundImage: `url(https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${movie.backdrop_path})`,
                             }}
-                        ></Movies>
-                        <Description>
-                            <Info>
-                                <Title title={movie.title}>
-                                    {/* {movie.title.replace(/\s+/g, "\n")} */}
-                                    {movie.title}
-                                </Title>
-                                <MovieInfoVote rate={movie.vote_average}>
-                                    {/* <FontAwesomeIcon
+                        >
+                            <Description>
+                                <Info>
+                                    <Title title={movie.title}>
+                                        {/* {movie.title.replace(/\s+/g, "\n")} */}
+                                        {movie.title}
+                                    </Title>
+                                    <MovieInfoVote rate={movie.vote_average}>
+                                        {/* <FontAwesomeIcon
                                             style={{
                                                 margin: "0 auto",
                                                 color: "#FECEA8",
@@ -38,20 +38,21 @@ const MovieBanner = ({ movies }) => {
                                             className="star"
                                             icon={faStar}
                                         /> */}
-                                    {movie.vote_average !== 0
-                                        ? movie.vote_average.toFixed(1)
-                                        : "-"}
-                                </MovieInfoVote>
-                            </Info>
-                            <ButtonContainer>
-                                <Button
-                                    value="more"
-                                    onClick={() => {
-                                        router.push(`/movie/${movie.id}`);
-                                    }}
-                                />
-                            </ButtonContainer>
-                        </Description>
+                                        {movie.vote_average !== 0
+                                            ? movie.vote_average.toFixed(1)
+                                            : "-"}
+                                    </MovieInfoVote>
+                                </Info>
+                                <ButtonContainer>
+                                    <Button
+                                        value="more"
+                                        onClick={() => {
+                                            router.push(`/movie/${movie.id}`);
+                                        }}
+                                    />
+                                </ButtonContainer>
+                            </Description>
+                        </Movies>
                     </BackFilter>
                 ))}
             </Carousel>
@@ -69,6 +70,9 @@ const Movies = styled.div`
     background-position: center;
     width: 100%;
     height: ${(800 / 1920) * 100}vw;
+    align-items: baseline;
+    display: flex;
+    align-items: flex-end;
 
     cursor: pointer;
 
@@ -94,6 +98,14 @@ const Description = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    flex-direction: flex-end;
+    background: rgba(74, 74, 74, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
 `;
 
 const Info = styled.div`
@@ -130,11 +142,12 @@ const MovieInfoVote = styled.div<RateType>`
 `;
 
 const Title = styled.span<TitleType>`
-    color: #575757;
+    color: #f9f9f9;
     /* background-color: rgba(0, 0, 0, 0);
     color: rgba(0, 0, 0, 0);
     -webkit-text-stroke: 1px #f9f9f9; */
     font-family: "Noto Sans KR", serif;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     margin: 0 12px;
     text-align: right;
     font-size: ${(props) =>
@@ -170,8 +183,9 @@ const ButtonContainer = styled.div`
         font-size: 16px;
         font-family: "Sansita Swashed", "Noto Sans KR", serif;
         padding-bottom: 14px;
-        background-color: #333333;
-        box-shadow: 2px 2px 4px #d9d9d9, -2px -2px 4px #ffffff;
+        background-color: #f9f9f9;
+        color: #333333;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     }
 
     @media screen and (max-width: 768px) {

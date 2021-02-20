@@ -6,9 +6,8 @@ import ProfileButton from "@features/common/button/ProfileButton";
 const NavButtons = () => {
     return (
         <Container>
-            <LogoutButton />
-
             <ProfileButton />
+            <LogoutButton />
         </Container>
     );
 };
@@ -17,7 +16,7 @@ export default NavButtons;
 
 const Container = styled.div`
     display: flex;
-    align-self: center;
+    align-items: center;
     > * {
         margin: 0 8px;
     }

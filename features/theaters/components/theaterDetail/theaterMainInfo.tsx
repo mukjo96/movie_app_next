@@ -163,7 +163,7 @@ const Poster = styled.img`
     width: 100%;
     padding: 10px;
     border-radius: 10px;
-    box-shadow: 5px 5px 10px #d9d9d9, -5px -5px 10px #ffffff;
+    filter: drop-shadow(3px 3px 2px gray);
 
     @media screen and (max-width: 768px) {
         display: none;

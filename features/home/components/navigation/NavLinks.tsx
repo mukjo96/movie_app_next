@@ -27,8 +27,8 @@ const Container = styled.ul`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 0 auto;
     padding-inline-start: 0px;
+    margin: 0;
     li {
         list-style: none;
         font-family: "Sansita Swashed", cursive;

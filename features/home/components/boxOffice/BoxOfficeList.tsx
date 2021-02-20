@@ -44,6 +44,7 @@ const BoxOfficeList = ({ title, dataProps, datas }) => {
                 <tbody>
                     {datas.map((data: number | string, index: number) => (
                         <TableRow key={index}>
+                            {console.log(data[index])}
                             {dataProps.map((props: string, index: number) => (
                                 <TableData
                                     key={index}
@@ -143,6 +144,11 @@ const TableRow = styled.tr`
 
     :last-of-type {
         border-bottom: 2px solid #333333;
+    }
+
+    :hover {
+        background-color: #d6d6d6;
+        cursor: pointer;
     }
 `;
 

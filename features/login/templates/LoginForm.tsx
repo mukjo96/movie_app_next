@@ -23,12 +23,12 @@ const LoginForm = () => {
     };
 
     const onGoogleLogin = async () => {
-        const provider = new firebaseClient.auth.GoogleAuthProvider();
+        let provider = new firebaseClient.auth.GoogleAuthProvider();
         await firebaseClient.auth().signInWithPopup(provider);
         router.push("/");
     };
     const onGithubLogin = async () => {
-        const provider = new firebaseClient.auth.GithubAuthProvider();
+        let provider = new firebaseClient.auth.GithubAuthProvider();
         await firebaseClient.auth().signInWithPopup(provider);
         router.push("/");
     };
