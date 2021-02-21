@@ -14,8 +14,11 @@ const LogoutButton = () => {
             {user ? (
                 <LogoutOutlined
                     color={"#333333"}
-                    height="16px"
-                    style={{ cursor: "pointer", alignSelf: "center" }}
+                    style={{
+                        cursor: "pointer",
+                        alignSelf: "center",
+                        fontSize: "18px",
+                    }}
                     onClick={async () => {
                         await firebaseClient.auth().signOut();
                         window.location.href = "/";

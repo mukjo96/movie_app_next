@@ -16,7 +16,7 @@ export default Login;
 
 const Container = styled.div`
     display: inline-flex;
-    width: 30vw;
+    width: 24em;
     flex-direction: column;
     justify-content: center;
     align-items: center;

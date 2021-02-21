@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { firebaseClient } from "../../../../../firebase/firebaseClient";
 
 import { Comment, Avatar, Form, Button, List, Input, Rate } from "antd";
+import { UserOutlined } from "@ant-design/icons";
 import { useAuth } from "../../../../../firebase/auth";
 import { useRouter } from "next/router";
 
@@ -19,7 +20,7 @@ const Editor = ({ onChange, onSubmit, submitting, value }) => (
                 onClick={onSubmit}
                 type="primary"
             >
-                Add Comment
+                댓글 쓰기
             </Button>
         </Form.Item>
     </>
@@ -47,6 +48,7 @@ const ReviewFactory = () => {
             creatorId: userObj.uid,
             theaterId: theaterId,
             nickName: userObj.displayName,
+            profileURL: userObj.photoURL,
             rate: rating,
         };
         await firebaseClient
@@ -65,7 +67,7 @@ const ReviewFactory = () => {
         setReview(value);
     };
 
-    const ratingChanged = (newRating) => {
+    const ratingChanged = (newRating: number) => {
         setRating(newRating * 2);
     };
 
@@ -73,10 +75,11 @@ const ReviewFactory = () => {
         <>
             <Comment
                 avatar={
-                    <Avatar
-                        src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-                        alt="Han Solo"
-                    />
+                    userObj.photoURL ? (
+                        <Avatar src={userObj.photoURL} />
+                    ) : (
+                        <Avatar icon={<UserOutlined />} />
+                    )
                 }
                 content={
                     <>

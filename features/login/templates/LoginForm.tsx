@@ -16,7 +16,6 @@ const LoginForm = () => {
             await firebaseClient
                 .auth()
                 .signInWithEmailAndPassword(email, password);
-            router.push("/");
         } catch (error) {
             alert(error.message);
         }

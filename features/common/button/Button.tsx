@@ -2,7 +2,6 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle, faGithub } from "@fortawesome/free-brands-svg-icons";
 import styled from "styled-components";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 type ButtonProps = {
     value: string;
@@ -16,7 +15,7 @@ const Button = ({ value, onClick, icon, type }: ButtonProps) => {
         return (
             <CustomButton onClick={onClick} icon={icon}>
                 <FontAwesomeIcon
-                    style={{ marginRight: "8px", verticalAlign: "top" }}
+                    style={{ marginRight: "8px" }}
                     icon={faGoogle}
                     width="14px"
                 />
@@ -27,7 +26,7 @@ const Button = ({ value, onClick, icon, type }: ButtonProps) => {
         return (
             <CustomButton onClick={onClick} icon={icon}>
                 <FontAwesomeIcon
-                    style={{ marginRight: "8px", verticalAlign: "top" }}
+                    style={{ marginRight: "8px" }}
                     icon={faGithub}
                     width="14px"
                 />

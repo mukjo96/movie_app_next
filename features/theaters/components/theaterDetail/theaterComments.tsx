@@ -8,20 +8,7 @@ import { firebaseClient } from "../../../../firebase/firebaseClient";
 import { useRouter } from "next/router";
 import Loading from "@features/common/Loading";
 import { useAuth } from "../../../../firebase/auth";
-
-const { Paragraph } = Typography;
-const { TextArea } = Input;
-
-/* const CommentList = ({ comments }) => (
-    <List
-        dataSource={comments}
-        header={`${comments.length} ${
-            comments.length > 1 ? "replies" : "reply"
-        }`}
-        itemLayout="horizontal"
-        renderItem={(props) => <Comment {...props} />}
-    />
-); */
+import Link from "next/link";
 
 type reviewObj = {
     id: string;
@@ -57,7 +44,6 @@ const TheaterComments = () => {
     };
 
     const getCinemaInfos = () => {
-        let ratingAverage = 0;
         firebaseClient
             .firestore()
             .collection(`reviews-${theaterid}`)
@@ -69,9 +55,12 @@ const TheaterComments = () => {
                         ...doc.data(),
                     })
                 );
+                let ratingAverage = 0;
                 reviewArray.map((review) => (ratingAverage += review.rate));
                 if (reviewArray.length > 0) {
                     ratingAverage = ratingAverage / reviewArray.length;
+                } else {
+                    ratingAverage = 0;
                 }
                 setReviews(reviewArray);
                 setIsLoading(false);
@@ -107,7 +96,13 @@ const TheaterComments = () => {
                                     <Comment
                                         author={item.nickName + " " + item.rate}
                                         avatar={
-                                            <Avatar icon={<UserOutlined />} />
+                                            item.profileURL ? (
+                                                <Avatar src={item.profileURL} />
+                                            ) : (
+                                                <Avatar
+                                                    icon={<UserOutlined />}
+                                                />
+                                            )
                                         }
                                         content={item.text}
                                         datetime={
@@ -131,7 +126,14 @@ const TheaterComments = () => {
                         />
                     )
                 )}
-                <ReviewFactory />
+                {user ? (
+                    <ReviewFactory />
+                ) : (
+                    <div>
+                        <Link href="/login">로그인</Link>해야 댓글을 작성할 수
+                        있습니다.
+                    </div>
+                )}
             </>
         </Container>
     );
@@ -142,6 +144,12 @@ export default TheaterComments;
 const Container = styled.div`
     width: 90%;
     margin: 0 auto;
+
+    @media screen and (max-width: 768px) {
+        .anticon {
+            padding: 0 !important;
+        }
+    }
 `;
 
 const StyledDelete = styled(DeleteOutlined)`
