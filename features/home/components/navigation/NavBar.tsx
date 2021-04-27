@@ -13,7 +13,7 @@ const NavBar = () => {
         <Container>
             <TextLogo />
             <Hamburger className={open ? "show" : "hidden"}>
-                <GroupBar>
+                <GroupBar className={open ? "show" : "hidden"}>
                     <NavLinks open={open} />
                     <Searchbar />
                 </GroupBar>
@@ -84,6 +84,13 @@ const GroupBar = styled.div`
     display: flex;
     flex-grow: 1;
     justify-content: center;
+
+    @media screen and (max-width: 768px) {
+        &.show {
+            display: flex;
+            flex-direction: column;
+        }
+    }
 `;
 
 const ToggleBtn = styled.section`
