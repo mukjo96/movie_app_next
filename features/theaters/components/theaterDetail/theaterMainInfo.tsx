@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Rate } from "antd";
 import { LikeFilled } from "@ant-design/icons";
@@ -10,11 +10,52 @@ import {
     EnvironmentTwoTone,
 } from "@ant-design/icons";
 import GDistance from "@features/kakaoMap/getDistance";
+import { firebaseClient } from "../../../../firebase/firebaseClient";
 
 const { Paragraph, Link } = Typography;
 
+type reviewObj = {
+    id: string;
+    text?: string;
+    createdAt?: Date;
+    creatorId?: string;
+    theaterId?: string;
+    nickName?: string;
+    rate?: number;
+};
+
 const TheaterMainInfo = ({ theater }) => {
     const rate: number = 8.5;
+    const [ratingAvg, setRatingAvg] = useState(0);
+    const [ratedUser, setRatedUser] = useState(0);
+
+    const getCinemaRating = () => {
+        firebaseClient
+            .firestore()
+            .collection(`reviews-${theater.idx}`)
+            .orderBy("createdAt", "desc")
+            .onSnapshot((snapshot) => {
+                const reviewArray: Array<reviewObj> = snapshot.docs.map(
+                    (doc) => ({
+                        id: doc.id,
+                        ...doc.data(),
+                    })
+                );
+                let ratingAverage = 0;
+                reviewArray.map((review) => (ratingAverage += review.rate));
+                if (reviewArray.length > 0) {
+                    ratingAverage = ratingAverage / reviewArray.length;
+                } else {
+                    ratingAverage = 0;
+                }
+                setRatingAvg(Number(ratingAverage.toFixed(1)));
+                setRatedUser(reviewArray.length > 0 ? reviewArray.length : 0);
+            });
+    };
+
+    useEffect(() => {
+        getCinemaRating();
+    }, []);
 
     return (
         <Container>
@@ -51,10 +92,10 @@ const TheaterMainInfo = ({ theater }) => {
                                 allowHalf={true}
                                 value={Math.round(rate) / 2}
                             />
-                            <Ratenum rate={rate}>
-                                {rate.toFixed(1)} (
+                            <Ratenum rate={ratingAvg}>
+                                {ratingAvg} (
                                 <LikeFilled /> {"\b"}
-                                {0})
+                                {ratedUser})
                             </Ratenum>
                         </span>
                     </Row>

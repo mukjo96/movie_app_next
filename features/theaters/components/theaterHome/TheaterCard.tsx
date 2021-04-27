@@ -9,9 +9,47 @@ import {
     ShopTwoTone,
 } from "@ant-design/icons";
 import GDistance from "@features/kakaoMap/getDistance";
+import { firebaseClient } from "../../../../firebase/firebaseClient";
+
+type reviewObj = {
+    id: string;
+    text?: string;
+    createdAt?: Date;
+    creatorId?: string;
+    theaterId?: string;
+    nickName?: string;
+    rate?: number;
+};
 
 const TheaterCard = ({ theater }) => {
-    const exampleRate = 8.5;
+    const [ratingAvg, setRatingAvg] = useState(0);
+
+    const getCinemaRating = () => {
+        firebaseClient
+            .firestore()
+            .collection(`reviews-${theater.idx}`)
+            .orderBy("createdAt", "desc")
+            .onSnapshot((snapshot) => {
+                const reviewArray: Array<reviewObj> = snapshot.docs.map(
+                    (doc) => ({
+                        id: doc.id,
+                        ...doc.data(),
+                    })
+                );
+                let ratingAverage = 0;
+                reviewArray.map((review) => (ratingAverage += review.rate));
+                if (reviewArray.length > 0) {
+                    ratingAverage = ratingAverage / reviewArray.length;
+                } else {
+                    ratingAverage = 0;
+                }
+                setRatingAvg(Number(ratingAverage.toFixed(1)));
+            });
+    };
+
+    useEffect(() => {
+        getCinemaRating();
+    }, []);
 
     return (
         <Container>
@@ -51,11 +89,11 @@ const TheaterCard = ({ theater }) => {
                         <GDistance x={theater.x} y={theater.y} />
                     </Row>
                 </Col>
-                <MovieInfoVote rate={exampleRate}>
+                <MovieInfoVote rate={ratingAvg}>
                     {/* {movies.vote_average !== 0
                                         ? movies.vote_average.toFixed(1)
                                         : "-"} */}
-                    {exampleRate}
+                    {ratingAvg !== 0 ? ratingAvg : "-"}
                 </MovieInfoVote>
             </StyledCard>
 
