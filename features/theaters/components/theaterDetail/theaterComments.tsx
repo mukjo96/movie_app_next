@@ -94,7 +94,9 @@ const TheaterComments = () => {
                                         `reviews-${theaterid}/${item.id}`
                                     )}
                                     <Comment
-                                        author={item.nickName + " " + item.rate}
+                                        author={
+                                            item.nickName + " | " + item.rate
+                                        }
                                         avatar={
                                             item.profileURL ? (
                                                 <Avatar src={item.profileURL} />
