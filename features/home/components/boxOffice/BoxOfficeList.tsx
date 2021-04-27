@@ -1,6 +1,11 @@
 import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
+import {
+    CaretUpOutlined,
+    CaretDownOutlined,
+    MinusOutlined,
+} from "@ant-design/icons";
 
 type TableDataProps = {
     props?: string;
@@ -14,7 +19,20 @@ const dataPropsMapper = {
     },
     rankInten: {
         title: "변동",
-        parseData: (data) => Math.sign(data),
+        parseData: (data) =>
+            Math.sign(data) > 0 ? (
+                <a>
+                    <CaretUpOutlined />
+                    {Math.sign(data)}
+                </a>
+            ) : Math.sign(data) < 0 ? (
+                <a>
+                    <CaretDownOutlined />
+                    {-Math.sign(data)}
+                </a>
+            ) : (
+                <MinusOutlined />
+            ),
     },
     movieNm: {
         title: "영화 제목",
@@ -156,23 +174,22 @@ const TableData = styled.td<TableDataProps>`
     /* padding: 5px;
     overflow: hidden;
     text-overflow: ellipsis; */
-    padding: 12px 15px;
+    padding: 12px 8px;
     a {
         text-decoration: none;
         cursor: pointer;
-        color: #333333;
+        color: ${(props) =>
+            props.props == "rankInten"
+                ? props.data < 0
+                    ? "#ff2929"
+                    : props.data > 0
+                    ? "#48b80f"
+                    : "#333333"
+                : "#333333"};
 
         :hover {
             text-decoration: underline;
         }
     }
-
-    color: ${(props) =>
-        props.props == "rankInten"
-            ? props.data < 0
-                ? "#ff2929"
-                : props.data > 0
-                ? "#48b80f"
-                : "#333333"
-            : "black"};
+    color: #333333;
 `;

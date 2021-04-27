@@ -13,8 +13,10 @@ const NavBar = () => {
         <Container>
             <TextLogo />
             <Hamburger className={open ? "show" : "hidden"}>
-                <NavLinks open={open} />
-                <Searchbar />
+                <GroupBar>
+                    <NavLinks open={open} />
+                    <Searchbar />
+                </GroupBar>
                 <NavButtons />
             </Hamburger>
             <ToggleBtn>
@@ -35,7 +37,7 @@ export default NavBar;
 
 const Container = styled.nav`
     display: flex;
-    justify-content: space-between;
+
     margin: 0 auto;
     padding: 8px 12px;
     align-items: center;
@@ -54,11 +56,9 @@ const Container = styled.nav`
 
 const Hamburger = styled.div`
     &.hidden {
-        flex-grow: 1;
         display: flex;
+        flex-grow: 1;
         align-items: center;
-        justify-content: space-between;
-        margin-left: 5%;
     }
 
     @media screen and (max-width: 768px) {
@@ -78,6 +78,12 @@ const Hamburger = styled.div`
             display: none;
         }
     }
+`;
+
+const GroupBar = styled.div`
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
 `;
 
 const ToggleBtn = styled.section`

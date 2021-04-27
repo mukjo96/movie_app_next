@@ -8,7 +8,7 @@ import {
 } from "@ant-design/icons";
 import Cast from "./descriptions/Cast";
 import Recommendations from "./descriptions/Recommendations";
-import Comments from "./descriptions/Comments";
+import MovieComments from "./descriptions/MovieComments";
 
 const { TabPane } = Tabs;
 
@@ -47,7 +47,7 @@ const Descriptions = () => {
                     }
                     key="3"
                 >
-                    <Comments />
+                    <MovieComments />
                 </TabPane>
             </StyledTabs>
         </Container>

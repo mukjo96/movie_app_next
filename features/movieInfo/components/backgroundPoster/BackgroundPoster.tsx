@@ -80,7 +80,8 @@ const Container = styled.div`
 `;
 
 const StyledPlayIcon = styled(FontAwesomeIcon)`
-    width: 100px;
+    width: 100px !important;
+    height: 100px !important;
     text-align: center;
     color: #ffff;
     filter: drop-shadow(3px 6px #272634);
@@ -88,7 +89,8 @@ const StyledPlayIcon = styled(FontAwesomeIcon)`
     cursor: pointer;
 
     @media screen and (max-width: 768px) {
-        width: 50px;
+        width: 50px !important;
+        height: 50px !important;
     }
 `;
 
